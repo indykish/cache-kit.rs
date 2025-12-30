@@ -1,0 +1,58 @@
+# Main navigation
+main:
+  - title: "Documentation"
+    url: /
+  - title: "Installation"
+    url: /installation
+  - title: "Concepts"
+    url: /concepts
+  - title: "Guides"
+    url: /guides/
+  - title: "GitHub"
+    url: https://github.com/megamsys/cache-kit.rs
+
+# Documentation sidebar
+docs:
+  - title: Getting Started
+    children:
+      - title: "Introduction"
+        url: /
+      - title: "Installation"
+        url: /installation
+      - title: "Core Concepts"
+        url: /concepts
+
+  - title: Architecture
+    children:
+      - title: "Design Principles"
+        url: /design-principles
+      - title: "Async Model"
+        url: /async-model
+      - title: "Serialization"
+        url: /serialization
+
+  - title: Integration
+    children:
+      - title: "Database Compatibility"
+        url: /database-compatibility
+      - title: "API Frameworks"
+        url: /api-frameworks
+      - title: "Cache Backends"
+        url: /backends
+
+  - title: Guides
+    children:
+      - title: "All Guides"
+        url: /guides/
+      - title: "Examples"
+        url: /guides/examples
+      - title: "Testing"
+        url: /guides/testing
+      - title: "Performance"
+        url: /guides/performance
+      - title: "Monitoring"
+        url: /guides/monitoring
+      - title: "Troubleshooting"
+        url: /guides/troubleshooting
+      - title: "Contributing"
+        url: /guides/contributing

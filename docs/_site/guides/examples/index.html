@@ -1,0 +1,1104 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.3 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-US" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Examples &amp; Patterns | cache-kit</title>
+<meta name="description" content="This document covers advanced cache framework patterns and usage scenarios.">
+
+
+  <meta name="author" content="Kishore Kumar Neelamegam">
+  
+  <meta property="article:author" content="Kishore Kumar Neelamegam">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="cache-kit">
+<meta property="og:title" content="Examples &amp; Patterns">
+<meta property="og:url" content="http://localhost:4000/cache-kit.rs/guides/examples/">
+
+
+  <meta property="og:description" content="This document covers advanced cache framework patterns and usage scenarios.">
+
+
+
+
+
+  <meta name="twitter:site" content="@indykish">
+  <meta name="twitter:title" content="Examples &amp; Patterns">
+  <meta name="twitter:description" content="This document covers advanced cache framework patterns and usage scenarios.">
+  <meta name="twitter:url" content="http://localhost:4000/cache-kit.rs/guides/examples/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2025-12-30T14:31:20+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/cache-kit.rs/guides/examples/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/cache-kit.rs/feed.xml" type="application/atom+xml" rel="alternate" title="cache-kit Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/cache-kit.rs/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/cache-kit.rs/">
+          cache-kit
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/cache-kit.rs/"
+                
+                
+              >Documentation</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cache-kit.rs/installation"
+                
+                
+              >Installation</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cache-kit.rs/concepts"
+                
+                
+              >Concepts</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cache-kit.rs/guides/"
+                
+                
+              >Guides</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="https://github.com/megamsys/cache-kit.rs"
+                
+                
+              >GitHub</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      <nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <span class="nav__sub-title">Getting Started</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/cache-kit.rs/">Introduction</a></li>
+            
+              <li><a href="/cache-kit.rs/installation">Installation</a></li>
+            
+              <li><a href="/cache-kit.rs/concepts">Core Concepts</a></li>
+            
+          </ul>
+          
+        </li>
+      
+        <li>
+          
+            <span class="nav__sub-title">Architecture</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/cache-kit.rs/design-principles">Design Principles</a></li>
+            
+              <li><a href="/cache-kit.rs/async-model">Async Model</a></li>
+            
+              <li><a href="/cache-kit.rs/serialization">Serialization</a></li>
+            
+          </ul>
+          
+        </li>
+      
+        <li>
+          
+            <span class="nav__sub-title">Integration</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/cache-kit.rs/database-compatibility">Database Compatibility</a></li>
+            
+              <li><a href="/cache-kit.rs/api-frameworks">API Frameworks</a></li>
+            
+              <li><a href="/cache-kit.rs/backends">Cache Backends</a></li>
+            
+          </ul>
+          
+        </li>
+      
+        <li>
+          
+            <span class="nav__sub-title">Guides</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/cache-kit.rs/guides/">All Guides</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/examples">Examples</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/testing">Testing</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/performance">Performance</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/monitoring">Monitoring</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/troubleshooting">Troubleshooting</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/contributing">Contributing</a></li>
+            
+          </ul>
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Examples &amp; Patterns">
+    <meta itemprop="description" content="This document covers advanced cache framework patterns and usage scenarios.">
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="http://localhost:4000/cache-kit.rs/guides/examples/" itemprop="url">Examples &amp; Patterns
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>This document covers advanced cache framework patterns and usage scenarios.</p>
+
+<hr />
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#composite-keys">Composite Keys</a></li>
+  <li><a href="#builder-pattern">Builder Pattern</a></li>
+  <li><a href="#registry-pattern">Registry Pattern</a></li>
+  <li><a href="#ttl-strategies">TTL Strategies</a></li>
+  <li><a href="#error-handling">Error Handling</a></li>
+  <li><a href="#batch-operations">Batch Operations</a></li>
+  <li><a href="#multi-tier-caching">Multi-Tier Caching</a></li>
+  <li><a href="#custom-serialization">Custom Serialization</a></li>
+  <li><a href="#async-patterns">Async Patterns</a></li>
+</ol>
+
+<hr />
+
+<h2 id="composite-keys">Composite Keys</h2>
+
+<p>Use composite keys for entities that depend on multiple parameters.</p>
+
+<h3 id="example-employment-by-person-and-date">Example: Employment by Person and Date</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="n">CacheEntity</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">serde</span><span class="p">::{</span><span class="n">Deserialize</span><span class="p">,</span> <span class="n">Serialize</span><span class="p">};</span>
+<span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">fmt</span><span class="p">::</span><span class="n">Display</span><span class="p">;</span>
+
+<span class="nd">#[derive(Clone,</span> <span class="nd">Serialize,</span> <span class="nd">Deserialize,</span> <span class="nd">Debug)]</span>
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">Employment</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="n">person_id</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">year</span><span class="p">:</span> <span class="nb">i32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">employer</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">salary</span><span class="p">:</span> <span class="nb">f64</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1">// Define a composite key type</span>
+<span class="nd">#[derive(Clone,</span> <span class="nd">Eq,</span> <span class="nd">PartialEq,</span> <span class="nd">Hash,</span> <span class="nd">Debug)]</span>
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">EmploymentKey</span> <span class="p">{</span>
+    <span class="n">person_id</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="n">year</span><span class="p">:</span> <span class="nb">i32</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">Display</span> <span class="k">for</span> <span class="n">EmploymentKey</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">fmt</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="nn">std</span><span class="p">::</span><span class="nn">fmt</span><span class="p">::</span><span class="n">Formatter</span><span class="o">&lt;</span><span class="nv">'_</span><span class="o">&gt;</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nn">std</span><span class="p">::</span><span class="nn">fmt</span><span class="p">::</span><span class="nb">Result</span> <span class="p">{</span>
+        <span class="nd">write!</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s">"{}:{}"</span><span class="p">,</span> <span class="k">self</span><span class="py">.person_id</span><span class="p">,</span> <span class="k">self</span><span class="py">.year</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">CacheEntity</span> <span class="k">for</span> <span class="n">Employment</span> <span class="p">{</span>
+    <span class="k">type</span> <span class="n">Key</span> <span class="o">=</span> <span class="n">EmploymentKey</span><span class="p">;</span>
+
+    <span class="k">fn</span> <span class="nf">cache_key</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="k">Self</span><span class="p">::</span><span class="n">Key</span> <span class="p">{</span>
+        <span class="n">EmploymentKey</span> <span class="p">{</span>
+            <span class="n">person_id</span><span class="p">:</span> <span class="k">self</span><span class="py">.person_id</span><span class="nf">.clone</span><span class="p">(),</span>
+            <span class="n">year</span><span class="p">:</span> <span class="k">self</span><span class="py">.year</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">fn</span> <span class="nf">cache_prefix</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">&amp;</span><span class="k">'static</span> <span class="nb">str</span> <span class="p">{</span>
+        <span class="s">"employment"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="k">struct</span> <span class="n">EmploymentFeeder</span> <span class="p">{</span>
+    <span class="n">person_id</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="n">year</span><span class="p">:</span> <span class="nb">i32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">employment</span><span class="p">:</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="n">Employment</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">CacheFeed</span><span class="o">&lt;</span><span class="n">Employment</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">EmploymentFeeder</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">entity_id</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="c1">// Both person_id and year become the entity_id</span>
+        <span class="nd">format!</span><span class="p">(</span><span class="s">"{}:{}"</span><span class="p">,</span> <span class="k">self</span><span class="py">.person_id</span><span class="p">,</span> <span class="k">self</span><span class="py">.year</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">fn</span> <span class="nf">feed</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">:</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="n">Employment</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="py">.employment</span> <span class="o">=</span> <span class="n">entity</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Fetch employment for a specific person and year</span>
+<span class="k">fn</span> <span class="nf">fetch_employment</span><span class="p">(</span>
+    <span class="n">expander</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="n">CacheExpander</span><span class="o">&lt;</span><span class="n">InMemoryBackend</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">person_id</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="n">year</span><span class="p">:</span> <span class="nb">i32</span><span class="p">,</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">feeder</span> <span class="o">=</span> <span class="n">EmploymentFeeder</span> <span class="p">{</span>
+        <span class="n">person_id</span><span class="p">,</span>
+        <span class="n">year</span><span class="p">,</span>
+        <span class="n">employment</span><span class="p">:</span> <span class="nb">None</span><span class="p">,</span>
+    <span class="p">};</span>
+
+    <span class="k">let</span> <span class="n">repository</span> <span class="o">=</span> <span class="n">EmploymentRepository</span><span class="p">;</span>
+    <span class="n">expander</span><span class="nf">.with</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">feeder</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">repository</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span><span class="p">)</span><span class="nf">.ok</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="k">let</span> <span class="nf">Some</span><span class="p">(</span><span class="n">emp</span><span class="p">)</span> <span class="o">=</span> <span class="n">feeder</span><span class="py">.employment</span> <span class="p">{</span>
+        <span class="nd">println!</span><span class="p">(</span><span class="s">"Employment: {:?}"</span><span class="p">,</span> <span class="n">emp</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="builder-pattern">Builder Pattern</h2>
+
+<p>Use a builder for complex cache configurations.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::{</span><span class="n">CacheExpander</span><span class="p">,</span> <span class="nn">observability</span><span class="p">::</span><span class="n">TtlPolicy</span><span class="p">};</span>
+<span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">time</span><span class="p">::</span><span class="n">Duration</span><span class="p">;</span>
+
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">CacheBuilder</span><span class="o">&lt;</span><span class="n">B</span><span class="p">:</span> <span class="n">CacheBackend</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="n">expander</span><span class="p">:</span> <span class="n">CacheExpander</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">ttl_policy</span><span class="p">:</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="n">TtlPolicy</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="p">:</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span> <span class="n">CacheMetrics</span><span class="o">&gt;&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="o">&lt;</span><span class="n">B</span><span class="p">:</span> <span class="n">CacheBackend</span><span class="o">&gt;</span> <span class="n">CacheBuilder</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">new</span><span class="p">(</span><span class="n">backend</span><span class="p">:</span> <span class="n">B</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="k">Self</span> <span class="p">{</span>
+        <span class="n">CacheBuilder</span> <span class="p">{</span>
+            <span class="n">expander</span><span class="p">:</span> <span class="nn">CacheExpander</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">backend</span><span class="p">),</span>
+            <span class="n">ttl_policy</span><span class="p">:</span> <span class="nb">None</span><span class="p">,</span>
+            <span class="n">metrics</span><span class="p">:</span> <span class="nb">None</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">with_ttl</span><span class="p">(</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">policy</span><span class="p">:</span> <span class="n">TtlPolicy</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="k">Self</span> <span class="p">{</span>
+        <span class="k">self</span><span class="py">.ttl_policy</span> <span class="o">=</span> <span class="nf">Some</span><span class="p">(</span><span class="n">policy</span><span class="p">);</span>
+        <span class="k">self</span>
+    <span class="p">}</span>
+
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">with_metrics</span><span class="p">(</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">metrics</span><span class="p">:</span> <span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span> <span class="n">CacheMetrics</span><span class="o">&gt;</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="k">Self</span> <span class="p">{</span>
+        <span class="k">self</span><span class="py">.metrics</span> <span class="o">=</span> <span class="nf">Some</span><span class="p">(</span><span class="n">metrics</span><span class="p">);</span>
+        <span class="k">self</span>
+    <span class="p">}</span>
+
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">build</span><span class="p">(</span><span class="k">mut</span> <span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">CacheExpander</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nf">Some</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span> <span class="o">=</span> <span class="k">self</span><span class="py">.metrics</span> <span class="p">{</span>
+            <span class="k">self</span><span class="py">.expander</span> <span class="o">=</span> <span class="k">self</span><span class="py">.expander</span><span class="nf">.with_metrics</span><span class="p">(</span><span class="n">metrics</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nf">Some</span><span class="p">(</span><span class="n">ttl</span><span class="p">)</span> <span class="o">=</span> <span class="k">self</span><span class="py">.ttl_policy</span> <span class="p">{</span>
+            <span class="k">self</span><span class="py">.expander</span> <span class="o">=</span> <span class="k">self</span><span class="py">.expander</span><span class="nf">.with_ttl_policy</span><span class="p">(</span><span class="n">ttl</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">self</span><span class="py">.expander</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="k">fn</span> <span class="nf">setup_cache</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="n">CacheExpander</span><span class="o">&lt;</span><span class="n">InMemoryBackend</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">backend</span> <span class="o">=</span> <span class="nn">InMemoryBackend</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
+    
+    <span class="k">let</span> <span class="n">ttl_policy</span> <span class="o">=</span> <span class="nn">TtlPolicy</span><span class="p">::</span><span class="nf">PerType</span><span class="p">(</span><span class="nn">Box</span><span class="p">::</span><span class="nf">new</span><span class="p">(|</span><span class="n">entity_type</span><span class="p">|</span> <span class="p">{</span>
+        <span class="k">match</span> <span class="n">entity_type</span> <span class="p">{</span>
+            <span class="s">"employment"</span> <span class="k">=&gt;</span> <span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">3600</span><span class="p">),</span>
+            <span class="s">"borrower"</span> <span class="k">=&gt;</span> <span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">7200</span><span class="p">),</span>
+            <span class="n">_</span> <span class="k">=&gt;</span> <span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">1800</span><span class="p">),</span>
+        <span class="p">}</span>
+    <span class="p">}));</span>
+
+    <span class="nn">CacheBuilder</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">backend</span><span class="p">)</span>
+        <span class="nf">.with_ttl</span><span class="p">(</span><span class="n">ttl_policy</span><span class="p">)</span>
+        <span class="nf">.with_metrics</span><span class="p">(</span><span class="nn">Box</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">MyMetrics</span><span class="p">))</span>
+        <span class="nf">.build</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="registry-pattern">Registry Pattern</h2>
+
+<p>Use a registry for managing multiple feeders and repositories.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">collections</span><span class="p">::</span><span class="n">HashMap</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::{</span><span class="n">CacheEntity</span><span class="p">,</span> <span class="n">CacheFeed</span><span class="p">,</span> <span class="n">DataRepository</span><span class="p">,</span> <span class="n">CacheExpander</span><span class="p">};</span>
+
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">CacheRegistry</span><span class="o">&lt;</span><span class="n">B</span><span class="p">:</span> <span class="n">CacheBackend</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="n">expander</span><span class="p">:</span> <span class="n">CacheExpander</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">feeders</span><span class="p">:</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span> <span class="nn">std</span><span class="p">::</span><span class="nn">any</span><span class="p">::</span><span class="n">Any</span><span class="o">&gt;&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="o">&lt;</span><span class="n">B</span><span class="p">:</span> <span class="n">CacheBackend</span><span class="o">&gt;</span> <span class="n">CacheRegistry</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">new</span><span class="p">(</span><span class="n">backend</span><span class="p">:</span> <span class="n">B</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="k">Self</span> <span class="p">{</span>
+        <span class="n">CacheRegistry</span> <span class="p">{</span>
+            <span class="n">expander</span><span class="p">:</span> <span class="nn">CacheExpander</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">backend</span><span class="p">),</span>
+            <span class="n">feeders</span><span class="p">:</span> <span class="nn">HashMap</span><span class="p">::</span><span class="nf">new</span><span class="p">(),</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="cd">/// Register a feeder by name</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="n">register_feeder</span><span class="o">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="k">'static</span><span class="o">&gt;</span><span class="p">(</span>
+        <span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="n">feeder</span><span class="p">:</span> <span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span> <span class="nn">std</span><span class="p">::</span><span class="nn">any</span><span class="p">::</span><span class="n">Any</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="py">.feeders</span><span class="nf">.insert</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">feeder</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cd">/// Get a registered feeder</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="n">get_feeder</span><span class="o">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="k">'static</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="k">self</span><span class="py">.feeders</span>
+            <span class="nf">.get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="nf">.and_then</span><span class="p">(|</span><span class="n">f</span><span class="p">|</span> <span class="n">f</span><span class="py">.downcast_ref</span><span class="p">::</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">())</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Simpler approach: Direct registry for specific types</span>
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">EntityRegistry</span> <span class="p">{</span>
+    <span class="n">employment_feeders</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="n">Employment</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">borrower_feeders</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="n">Borrower</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">EntityRegistry</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">new</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="k">Self</span> <span class="p">{</span>
+        <span class="n">EntityRegistry</span> <span class="p">{</span>
+            <span class="n">employment_feeders</span><span class="p">:</span> <span class="nn">Vec</span><span class="p">::</span><span class="nf">new</span><span class="p">(),</span>
+            <span class="n">borrower_feeders</span><span class="p">:</span> <span class="nn">Vec</span><span class="p">::</span><span class="nf">new</span><span class="p">(),</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">fetch_employment_batch</span><span class="p">(</span>
+        <span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span>
+        <span class="n">expander</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="n">CacheExpander</span><span class="o">&lt;</span><span class="n">InMemoryBackend</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">ids</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">repository</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">dyn</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">Employment</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">id</span> <span class="k">in</span> <span class="n">ids</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="k">mut</span> <span class="n">feeder</span> <span class="o">=</span> <span class="nn">GenericFeeder</span><span class="p">::</span><span class="o">&lt;</span><span class="n">Employment</span><span class="o">&gt;</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">id</span><span class="nf">.clone</span><span class="p">());</span>
+            <span class="n">expander</span><span class="nf">.with</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span><span class="p">)</span><span class="nf">.ok</span><span class="p">();</span>
+            <span class="k">self</span><span class="py">.employment_feeders</span><span class="nf">.push</span><span class="p">((</span><span class="n">id</span><span class="p">,</span> <span class="n">feeder</span><span class="py">.entity</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">fetch_borrower_batch</span><span class="p">(</span>
+        <span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span>
+        <span class="n">expander</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="n">CacheExpander</span><span class="o">&lt;</span><span class="n">InMemoryBackend</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">ids</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">repository</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">dyn</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">Borrower</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">id</span> <span class="k">in</span> <span class="n">ids</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="k">mut</span> <span class="n">feeder</span> <span class="o">=</span> <span class="nn">GenericFeeder</span><span class="p">::</span><span class="o">&lt;</span><span class="n">Borrower</span><span class="o">&gt;</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">id</span><span class="nf">.clone</span><span class="p">());</span>
+            <span class="n">expander</span><span class="nf">.with</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span><span class="p">)</span><span class="nf">.ok</span><span class="p">();</span>
+            <span class="k">self</span><span class="py">.borrower_feeders</span><span class="nf">.push</span><span class="p">((</span><span class="n">id</span><span class="p">,</span> <span class="n">feeder</span><span class="py">.entity</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="k">fn</span> <span class="nf">batch_fetch_entities</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">backend</span> <span class="o">=</span> <span class="nn">InMemoryBackend</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">expander</span> <span class="o">=</span> <span class="nn">CacheExpander</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">backend</span><span class="p">);</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">registry</span> <span class="o">=</span> <span class="nn">EntityRegistry</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
+
+    <span class="k">let</span> <span class="n">employment_repo</span> <span class="o">=</span> <span class="n">EmploymentRepository</span><span class="p">;</span>
+    <span class="k">let</span> <span class="n">ids</span> <span class="o">=</span> <span class="nd">vec!</span><span class="p">[</span><span class="s">"emp_1"</span><span class="nf">.to_string</span><span class="p">(),</span> <span class="s">"emp_2"</span><span class="nf">.to_string</span><span class="p">(),</span> <span class="s">"emp_3"</span><span class="nf">.to_string</span><span class="p">()];</span>
+
+    <span class="n">registry</span><span class="nf">.fetch_employment_batch</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">expander</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">employment_repo</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">employment</span><span class="p">)</span> <span class="k">in</span> <span class="n">registry</span><span class="py">.employment_feeders</span><span class="nf">.iter</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nf">Some</span><span class="p">(</span><span class="n">emp</span><span class="p">)</span> <span class="o">=</span> <span class="n">employment</span> <span class="p">{</span>
+            <span class="nd">println!</span><span class="p">(</span><span class="s">"Employment {}: {:?}"</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">emp</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="ttl-strategies">TTL Strategies</h2>
+
+<p>Different TTL approaches for different scenarios.</p>
+
+<h3 id="fixed-ttl-simple">Fixed TTL (Simple)</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nn">observability</span><span class="p">::</span><span class="n">TtlPolicy</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">time</span><span class="p">::</span><span class="n">Duration</span><span class="p">;</span>
+
+<span class="k">let</span> <span class="n">ttl</span> <span class="o">=</span> <span class="nn">TtlPolicy</span><span class="p">::</span><span class="nf">Fixed</span><span class="p">(</span><span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">3600</span><span class="p">));</span> <span class="c1">// 1 hour</span>
+</code></pre></div></div>
+
+<h3 id="per-type-ttl">Per-Type TTL</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="n">ttl</span> <span class="o">=</span> <span class="nn">TtlPolicy</span><span class="p">::</span><span class="nf">PerType</span><span class="p">(</span><span class="nn">Box</span><span class="p">::</span><span class="nf">new</span><span class="p">(|</span><span class="n">entity_type</span><span class="p">|</span> <span class="p">{</span>
+    <span class="k">match</span> <span class="n">entity_type</span> <span class="p">{</span>
+        <span class="c1">// Short-lived volatile data</span>
+        <span class="s">"transaction"</span> <span class="k">=&gt;</span> <span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span>
+        
+        <span class="c1">// Medium-lived data</span>
+        <span class="s">"employment"</span> <span class="k">=&gt;</span> <span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">1800</span><span class="p">),</span>
+        <span class="s">"borrower"</span> <span class="k">=&gt;</span> <span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">3600</span><span class="p">),</span>
+        
+        <span class="c1">// Long-lived stable data</span>
+        <span class="s">"lending_term"</span> <span class="k">=&gt;</span> <span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">86400</span><span class="p">),</span>
+        <span class="s">"site_settings"</span> <span class="k">=&gt;</span> <span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">86400</span><span class="p">),</span>
+        
+        <span class="c1">// Default</span>
+        <span class="n">_</span> <span class="k">=&gt;</span> <span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">1800</span><span class="p">),</span>
+    <span class="p">}</span>
+<span class="p">}));</span>
+</code></pre></div></div>
+
+<h3 id="context-aware-ttl">Context-Aware TTL</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nn">observability</span><span class="p">::</span><span class="n">TtlPolicy</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nn">strategy</span><span class="p">::</span><span class="n">CacheContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">time</span><span class="p">::</span><span class="n">Duration</span><span class="p">;</span>
+
+<span class="k">let</span> <span class="n">ttl</span> <span class="o">=</span> <span class="nn">TtlPolicy</span><span class="p">::</span><span class="nf">Custom</span><span class="p">(</span><span class="nn">Box</span><span class="p">::</span><span class="nf">new</span><span class="p">(|</span><span class="n">context</span><span class="p">|</span> <span class="p">{</span>
+    <span class="c1">// Different TTL based on operation</span>
+    <span class="k">match</span> <span class="n">context</span><span class="py">.strategy</span> <span class="p">{</span>
+        <span class="c1">// Fresh data is cached longer</span>
+        <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Fresh</span> <span class="k">=&gt;</span> <span class="nf">Some</span><span class="p">(</span><span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">7200</span><span class="p">)),</span>
+        
+        <span class="c1">// Refresh data for balance (1 hour)</span>
+        <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span> <span class="k">=&gt;</span> <span class="nf">Some</span><span class="p">(</span><span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">3600</span><span class="p">)),</span>
+        
+        <span class="c1">// Invalidate has very short TTL</span>
+        <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Invalidate</span> <span class="k">=&gt;</span> <span class="nf">Some</span><span class="p">(</span><span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">300</span><span class="p">)),</span>
+        
+        <span class="c1">// Bypass doesn't cache</span>
+        <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Bypass</span> <span class="k">=&gt;</span> <span class="nb">None</span><span class="p">,</span>
+        
+        <span class="n">_</span> <span class="k">=&gt;</span> <span class="nf">Some</span><span class="p">(</span><span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">1800</span><span class="p">)),</span>
+    <span class="p">}</span>
+<span class="p">}));</span>
+</code></pre></div></div>
+
+<h3 id="user-role-based-ttl">User Role-Based TTL</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="n">ttl</span> <span class="o">=</span> <span class="nn">TtlPolicy</span><span class="p">::</span><span class="nf">PerType</span><span class="p">(</span><span class="nn">Box</span><span class="p">::</span><span class="nf">new</span><span class="p">(|</span><span class="n">user_role</span><span class="p">|</span> <span class="p">{</span>
+    <span class="k">match</span> <span class="n">user_role</span> <span class="p">{</span>
+        <span class="c1">// Admin sees stale data for longer (trusted)</span>
+        <span class="s">"admin"</span> <span class="k">=&gt;</span> <span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">7200</span><span class="p">),</span>
+        
+        <span class="c1">// Regular user gets fresher data</span>
+        <span class="s">"user"</span> <span class="k">=&gt;</span> <span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">1800</span><span class="p">),</span>
+        
+        <span class="c1">// Guest gets very fresh data</span>
+        <span class="s">"guest"</span> <span class="k">=&gt;</span> <span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">300</span><span class="p">),</span>
+        
+        <span class="n">_</span> <span class="k">=&gt;</span> <span class="nn">Duration</span><span class="p">::</span><span class="nf">from_secs</span><span class="p">(</span><span class="mi">1800</span><span class="p">),</span>
+    <span class="p">}</span>
+<span class="p">}));</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="error-handling">Error Handling</h2>
+
+<p>Proper error handling patterns.</p>
+
+<h3 id="graceful-degradation">Graceful Degradation</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nn">error</span><span class="p">::</span><span class="n">Error</span><span class="p">;</span>
+
+<span class="k">fn</span> <span class="nf">fetch_with_fallback</span><span class="p">(</span>
+    <span class="n">expander</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="n">CacheExpander</span><span class="o">&lt;</span><span class="n">InMemoryBackend</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">feeder</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="k">impl</span> <span class="n">CacheFeed</span><span class="o">&lt;</span><span class="n">Employment</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">repository</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">dyn</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">Employment</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="k">match</span> <span class="n">expander</span><span class="nf">.with</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="nd">println!</span><span class="p">(</span><span class="s">"Successfully fetched from cache or database"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nf">Err</span><span class="p">(</span><span class="nn">Error</span><span class="p">::</span><span class="nf">SerializationError</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"Serialization error (corrupted cache?): {}"</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+            <span class="c1">// Try to fetch fresh copy</span>
+            <span class="k">let</span> <span class="n">_</span> <span class="o">=</span> <span class="n">expander</span><span class="nf">.with</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Invalidate</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nf">Err</span><span class="p">(</span><span class="nn">Error</span><span class="p">::</span><span class="nf">RepositoryError</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"Database error: {}"</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+            <span class="c1">// Try cache-only</span>
+            <span class="k">let</span> <span class="n">_</span> <span class="o">=</span> <span class="n">expander</span><span class="nf">.with</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Fresh</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nf">Err</span><span class="p">(</span><span class="nn">Error</span><span class="p">::</span><span class="nf">BackendError</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"Cache backend error: {}"</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+            <span class="c1">// Bypass cache, go directly to DB</span>
+            <span class="k">let</span> <span class="n">_</span> <span class="o">=</span> <span class="n">expander</span><span class="nf">.with</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Bypass</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nf">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
+            <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"Other error: {:?}"</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="retry-logic">Retry Logic</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">time</span><span class="p">::</span><span class="n">Duration</span><span class="p">;</span>
+
+<span class="k">fn</span> <span class="nf">fetch_with_retry</span><span class="p">(</span>
+    <span class="n">expander</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="n">CacheExpander</span><span class="o">&lt;</span><span class="n">InMemoryBackend</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">feeder</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="k">impl</span> <span class="n">CacheFeed</span><span class="o">&lt;</span><span class="n">Employment</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">repository</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">dyn</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">Employment</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">max_retries</span><span class="p">:</span> <span class="nb">u32</span><span class="p">,</span>
+<span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">retries</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="k">loop</span> <span class="p">{</span>
+        <span class="k">match</span> <span class="n">expander</span><span class="nf">.with</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nf">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="k">return</span> <span class="nf">Ok</span><span class="p">(()),</span>
+            <span class="nf">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
+                <span class="n">retries</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+                <span class="k">if</span> <span class="n">retries</span> <span class="o">&gt;=</span> <span class="n">max_retries</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nf">Err</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+                <span class="p">}</span>
+                
+                <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"Retry {}/{}: {:?}"</span><span class="p">,</span> <span class="n">retries</span><span class="p">,</span> <span class="n">max_retries</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+                <span class="nn">std</span><span class="p">::</span><span class="nn">thread</span><span class="p">::</span><span class="nf">sleep</span><span class="p">(</span><span class="nn">Duration</span><span class="p">::</span><span class="nf">from_millis</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">retries</span> <span class="k">as</span> <span class="nb">u64</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="batch-operations">Batch Operations</h2>
+
+<p>Cache multiple entities efficiently.</p>
+
+<h3 id="batch-get">Batch Get</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">pub</span> <span class="k">fn</span> <span class="n">batch_get</span><span class="o">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="n">CacheEntity</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">expander</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="n">CacheExpander</span><span class="o">&lt;</span><span class="k">impl</span> <span class="n">CacheBackend</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">ids</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">repository</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">dyn</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">results</span> <span class="o">=</span> <span class="nn">Vec</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
+    
+    <span class="k">for</span> <span class="n">id</span> <span class="k">in</span> <span class="n">ids</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="k">mut</span> <span class="n">feeder</span> <span class="o">=</span> <span class="nn">GenericFeeder</span><span class="p">::</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+        
+        <span class="k">if</span> <span class="n">expander</span><span class="nf">.with</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span><span class="p">)</span><span class="nf">.is_ok</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">results</span><span class="nf">.push</span><span class="p">(</span><span class="n">feeder</span><span class="py">.entity</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">results</span><span class="nf">.push</span><span class="p">(</span><span class="nb">None</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="n">results</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="k">let</span> <span class="n">employment_ids</span> <span class="o">=</span> <span class="nd">vec!</span><span class="p">[</span><span class="s">"emp_1"</span><span class="nf">.to_string</span><span class="p">(),</span> <span class="s">"emp_2"</span><span class="nf">.to_string</span><span class="p">(),</span> <span class="s">"emp_3"</span><span class="nf">.to_string</span><span class="p">()];</span>
+<span class="k">let</span> <span class="n">results</span> <span class="o">=</span> <span class="nn">batch_get</span><span class="p">::</span><span class="o">&lt;</span><span class="n">Employment</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">expander</span><span class="p">,</span> <span class="n">employment_ids</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">repository</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="parallel-batch-processing">Parallel Batch Processing</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">sync</span><span class="p">::</span><span class="nb">Arc</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">sync</span><span class="p">::</span><span class="n">Mutex</span><span class="p">;</span>
+
+<span class="k">pub</span> <span class="k">fn</span> <span class="n">batch_get_parallel</span><span class="o">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="n">CacheEntity</span> <span class="o">+</span> <span class="nb">Send</span> <span class="o">+</span> <span class="k">'static</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">backend</span><span class="p">:</span> <span class="nb">Arc</span><span class="o">&lt;</span><span class="n">InMemoryBackend</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">ids</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">repository</span><span class="p">:</span> <span class="nb">Arc</span><span class="o">&lt;</span><span class="k">dyn</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">,</span>
+<span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">results</span> <span class="o">=</span> <span class="nn">Arc</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="nn">Mutex</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="nn">Vec</span><span class="p">::</span><span class="nf">new</span><span class="p">()));</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">handles</span> <span class="o">=</span> <span class="nd">vec!</span><span class="p">[];</span>
+
+    <span class="k">for</span> <span class="n">id</span> <span class="k">in</span> <span class="n">ids</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="n">backend_clone</span> <span class="o">=</span> <span class="nn">Arc</span><span class="p">::</span><span class="nf">clone</span><span class="p">(</span><span class="o">&amp;</span><span class="n">backend</span><span class="p">);</span>
+        <span class="k">let</span> <span class="n">repo_clone</span> <span class="o">=</span> <span class="nn">Arc</span><span class="p">::</span><span class="nf">clone</span><span class="p">(</span><span class="o">&amp;</span><span class="n">repository</span><span class="p">);</span>
+        <span class="k">let</span> <span class="n">results_clone</span> <span class="o">=</span> <span class="nn">Arc</span><span class="p">::</span><span class="nf">clone</span><span class="p">(</span><span class="o">&amp;</span><span class="n">results</span><span class="p">);</span>
+
+        <span class="k">let</span> <span class="n">handle</span> <span class="o">=</span> <span class="nn">std</span><span class="p">::</span><span class="nn">thread</span><span class="p">::</span><span class="nf">spawn</span><span class="p">(</span><span class="k">move</span> <span class="p">||</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="k">mut</span> <span class="n">expander</span> <span class="o">=</span> <span class="nn">CacheExpander</span><span class="p">::</span><span class="nf">new</span><span class="p">((</span><span class="o">*</span><span class="n">backend_clone</span><span class="p">)</span><span class="nf">.clone</span><span class="p">());</span>
+            <span class="k">let</span> <span class="k">mut</span> <span class="n">feeder</span> <span class="o">=</span> <span class="nn">GenericFeeder</span><span class="p">::</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="k">let</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">expander</span><span class="nf">.with</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">feeder</span><span class="p">,</span> <span class="o">&amp;*</span><span class="n">repo_clone</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">results_clone</span><span class="nf">.lock</span><span class="p">()</span><span class="nf">.unwrap</span><span class="p">()</span><span class="nf">.push</span><span class="p">(</span><span class="n">feeder</span><span class="py">.entity</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+
+        <span class="n">handles</span><span class="nf">.push</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">handle</span> <span class="k">in</span> <span class="n">handles</span> <span class="p">{</span>
+        <span class="n">handle</span><span class="nf">.join</span><span class="p">()</span><span class="nf">.unwrap</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nn">Arc</span><span class="p">::</span><span class="nf">into_inner</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+        <span class="nf">.unwrap</span><span class="p">()</span>
+        <span class="nf">.into_inner</span><span class="p">()</span>
+        <span class="nf">.unwrap</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="multi-tier-caching">Multi-Tier Caching</h2>
+
+<p>Implement L1 (in-memory) and L2 (Redis) cache tiers.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="n">CacheExpander</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nn">backend</span><span class="p">::{</span><span class="n">InMemoryBackend</span><span class="p">,</span> <span class="n">RedisBackend</span><span class="p">};</span>
+
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">TieredCache</span> <span class="p">{</span>
+    <span class="n">l1</span><span class="p">:</span> <span class="n">CacheExpander</span><span class="o">&lt;</span><span class="n">InMemoryBackend</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// Fast, local</span>
+    <span class="n">l2</span><span class="p">:</span> <span class="n">CacheExpander</span><span class="o">&lt;</span><span class="n">RedisBackend</span><span class="o">&gt;</span><span class="p">,</span>    <span class="c1">// Distributed</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">TieredCache</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">new</span><span class="p">(</span><span class="n">l1_backend</span><span class="p">:</span> <span class="n">InMemoryBackend</span><span class="p">,</span> <span class="n">l2_backend</span><span class="p">:</span> <span class="n">RedisBackend</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="k">Self</span> <span class="p">{</span>
+        <span class="n">TieredCache</span> <span class="p">{</span>
+            <span class="n">l1</span><span class="p">:</span> <span class="nn">CacheExpander</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">l1_backend</span><span class="p">),</span>
+            <span class="n">l2</span><span class="p">:</span> <span class="nn">CacheExpander</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">l2_backend</span><span class="p">),</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">pub</span> <span class="k">fn</span> <span class="n">fetch</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">F</span><span class="o">&gt;</span><span class="p">(</span>
+        <span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span>
+        <span class="n">feeder</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="n">F</span><span class="p">,</span>
+        <span class="n">repository</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">dyn</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">strategy</span><span class="p">:</span> <span class="n">CacheStrategy</span><span class="p">,</span>
+    <span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span>
+    <span class="k">where</span>
+        <span class="n">T</span><span class="p">:</span> <span class="n">CacheEntity</span><span class="p">,</span>
+        <span class="n">F</span><span class="p">:</span> <span class="n">CacheFeed</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="c1">// Try L1 first (fastest)</span>
+        <span class="k">match</span> <span class="k">self</span><span class="py">.l1</span><span class="nf">.with</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Fresh</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nf">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
+                <span class="nd">println!</span><span class="p">(</span><span class="s">"L1 cache hit"</span><span class="p">);</span>
+                <span class="k">return</span> <span class="nf">Ok</span><span class="p">(());</span>
+            <span class="p">}</span>
+            <span class="nf">Err</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
+                <span class="c1">// L1 miss, try L2</span>
+                <span class="nd">println!</span><span class="p">(</span><span class="s">"L1 cache miss, trying L2"</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Try L2 (distributed)</span>
+        <span class="k">match</span> <span class="k">self</span><span class="py">.l2</span><span class="nf">.with</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Fresh</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nf">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
+                <span class="nd">println!</span><span class="p">(</span><span class="s">"L2 cache hit, populating L1"</span><span class="p">);</span>
+                <span class="c1">// Populate L1 for next access</span>
+                <span class="k">self</span><span class="py">.l1</span><span class="nf">.with</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span><span class="p">)</span><span class="nf">.ok</span><span class="p">();</span>
+                <span class="k">return</span> <span class="nf">Ok</span><span class="p">(());</span>
+            <span class="p">}</span>
+            <span class="nf">Err</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
+                <span class="c1">// L2 miss, fetch from DB</span>
+                <span class="nd">println!</span><span class="p">(</span><span class="s">"L2 cache miss, fetching from database"</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Fetch from database and populate both tiers</span>
+        <span class="k">self</span><span class="py">.l2</span><span class="nf">.with</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="n">strategy</span><span class="nf">.clone</span><span class="p">())</span><span class="o">?</span><span class="p">;</span>
+        <span class="k">self</span><span class="py">.l1</span><span class="nf">.with</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="n">strategy</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+        <span class="nf">Ok</span><span class="p">(())</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">l1</span> <span class="o">=</span> <span class="nn">InMemoryBackend</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">l2</span> <span class="o">=</span> <span class="nn">RedisBackend</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="nn">RedisConfig</span><span class="p">::</span><span class="nf">default</span><span class="p">())</span><span class="o">?</span><span class="p">;</span>
+    
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">cache</span> <span class="o">=</span> <span class="nn">TieredCache</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">);</span>
+    
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">feeder</span> <span class="o">=</span> <span class="nn">GenericFeeder</span><span class="p">::</span><span class="o">&lt;</span><span class="n">Employment</span><span class="o">&gt;</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="s">"emp_1"</span><span class="nf">.to_string</span><span class="p">());</span>
+    <span class="k">let</span> <span class="n">repo</span> <span class="o">=</span> <span class="n">EmploymentRepository</span><span class="p">;</span>
+    
+    <span class="n">cache</span><span class="nf">.fetch</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">feeder</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">repo</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+    
+    <span class="nf">Ok</span><span class="p">(())</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="custom-serialization">Custom Serialization</h2>
+
+<p>Override default serialization for specific entities.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="n">CacheEntity</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">serde_json</span><span class="p">::</span><span class="n">json</span><span class="p">;</span>
+
+<span class="nd">#[derive(Clone,</span> <span class="nd">Serialize,</span> <span class="nd">Deserialize)]</span>
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">LargeEntity</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="n">id</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">data</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">u8</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1">// Large binary data</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">CacheEntity</span> <span class="k">for</span> <span class="n">LargeEntity</span> <span class="p">{</span>
+    <span class="k">type</span> <span class="n">Key</span> <span class="o">=</span> <span class="nb">String</span><span class="p">;</span>
+
+    <span class="k">fn</span> <span class="nf">cache_key</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="k">Self</span><span class="p">::</span><span class="n">Key</span> <span class="p">{</span>
+        <span class="k">self</span><span class="py">.id</span><span class="nf">.clone</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">fn</span> <span class="nf">cache_prefix</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">&amp;</span><span class="k">'static</span> <span class="nb">str</span> <span class="p">{</span>
+        <span class="s">"large"</span>
+    <span class="p">}</span>
+
+    <span class="cd">/// Use MessagePack instead of JSON for efficiency</span>
+    <span class="k">fn</span> <span class="nf">serialize_for_cache</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">u8</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+        <span class="nn">rmp_serde</span><span class="p">::</span><span class="nf">to_vec</span><span class="p">(</span><span class="k">self</span><span class="p">)</span>
+            <span class="nf">.map_err</span><span class="p">(|</span><span class="n">e</span><span class="p">|</span> <span class="nn">Error</span><span class="p">::</span><span class="nf">SerializationError</span><span class="p">(</span><span class="n">e</span><span class="nf">.to_string</span><span class="p">()))</span>
+    <span class="p">}</span>
+
+    <span class="k">fn</span> <span class="nf">deserialize_from_cache</span><span class="p">(</span><span class="n">bytes</span><span class="p">:</span> <span class="o">&amp;</span><span class="p">[</span><span class="nb">u8</span><span class="p">])</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="nn">rmp_serde</span><span class="p">::</span><span class="nf">from_slice</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span>
+            <span class="nf">.map_err</span><span class="p">(|</span><span class="n">e</span><span class="p">|</span> <span class="nn">Error</span><span class="p">::</span><span class="nf">SerializationError</span><span class="p">(</span><span class="n">e</span><span class="nf">.to_string</span><span class="p">()))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="async-patterns">Async Patterns</h2>
+
+<p>cache-kit is async-first. Use direct <code class="language-plaintext highlighter-rouge">.await</code> calls:</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::{</span><span class="n">CacheExpander</span><span class="p">,</span> <span class="nn">backend</span><span class="p">::</span><span class="n">CacheBackend</span><span class="p">,</span> <span class="n">CacheEntity</span><span class="p">,</span> <span class="n">CacheFeed</span><span class="p">,</span> <span class="n">DataRepository</span><span class="p">,</span> <span class="n">CacheStrategy</span><span class="p">};</span>
+
+<span class="k">pub</span> <span class="k">async</span> <span class="k">fn</span> <span class="n">fetch_cached</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">R</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">expander</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">CacheExpander</span><span class="o">&lt;</span><span class="k">impl</span> <span class="n">CacheBackend</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">feeder</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="n">F</span><span class="p">,</span>
+    <span class="n">repository</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">R</span><span class="p">,</span>
+    <span class="n">strategy</span><span class="p">:</span> <span class="n">CacheStrategy</span><span class="p">,</span>
+<span class="p">)</span> <span class="k">-&gt;</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span>
+<span class="k">where</span>
+    <span class="n">T</span><span class="p">:</span> <span class="n">CacheEntity</span><span class="p">,</span>
+    <span class="n">F</span><span class="p">:</span> <span class="n">CacheFeed</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">R</span><span class="p">:</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">{</span>
+    <span class="c1">// Direct async call - no blocking needed</span>
+    <span class="n">expander</span><span class="py">.with</span><span class="p">::</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">R</span><span class="o">&gt;</span><span class="p">(</span><span class="n">feeder</span><span class="p">,</span> <span class="n">repository</span><span class="p">,</span> <span class="n">strategy</span><span class="p">)</span><span class="k">.await</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage in async context</span>
+<span class="nd">#[tokio::main]</span>
+<span class="k">async</span> <span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">backend</span> <span class="o">=</span> <span class="nn">InMemoryBackend</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">expander</span> <span class="o">=</span> <span class="nn">CacheExpander</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">backend</span><span class="p">);</span>
+
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">feeder</span> <span class="o">=</span> <span class="nn">GenericFeeder</span><span class="p">::</span><span class="o">&lt;</span><span class="n">Employment</span><span class="o">&gt;</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="s">"emp_1"</span><span class="nf">.to_string</span><span class="p">());</span>
+    <span class="k">let</span> <span class="n">repo</span> <span class="o">=</span> <span class="n">EmploymentRepository</span><span class="p">;</span>
+
+    <span class="nf">fetch_cached</span><span class="p">(</span><span class="o">&amp;</span><span class="n">expander</span><span class="p">,</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="n">feeder</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">repo</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span><span class="p">)</span><span class="k">.await</span><span class="o">?</span><span class="p">;</span>
+
+    <span class="nf">Ok</span><span class="p">(())</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="async-batch-processing">Async Batch Processing</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::{</span><span class="n">CacheService</span><span class="p">,</span> <span class="n">CacheEntity</span><span class="p">,</span> <span class="n">CacheFeed</span><span class="p">,</span> <span class="n">DataRepository</span><span class="p">,</span> <span class="nn">strategy</span><span class="p">::</span><span class="n">CacheStrategy</span><span class="p">};</span>
+<span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nn">backend</span><span class="p">::</span><span class="n">InMemoryBackend</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">sync</span><span class="p">::</span><span class="nb">Arc</span><span class="p">;</span>
+
+<span class="k">pub</span> <span class="k">async</span> <span class="k">fn</span> <span class="n">fetch_batch_async</span><span class="o">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="n">CacheEntity</span> <span class="o">+</span> <span class="nb">Send</span> <span class="o">+</span> <span class="k">'static</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">cache</span><span class="p">:</span> <span class="n">CacheService</span><span class="o">&lt;</span><span class="n">InMemoryBackend</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">ids</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">repository</span><span class="p">:</span> <span class="nb">Arc</span><span class="o">&lt;</span><span class="k">dyn</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">+</span> <span class="nb">Send</span> <span class="o">+</span> <span class="nb">Sync</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">tasks</span> <span class="o">=</span> <span class="nd">vec!</span><span class="p">[];</span>
+
+    <span class="k">for</span> <span class="n">id</span> <span class="k">in</span> <span class="n">ids</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="n">cache_clone</span> <span class="o">=</span> <span class="n">cache</span><span class="nf">.clone</span><span class="p">();</span>
+        <span class="k">let</span> <span class="n">repo_clone</span> <span class="o">=</span> <span class="nn">Arc</span><span class="p">::</span><span class="nf">clone</span><span class="p">(</span><span class="o">&amp;</span><span class="n">repository</span><span class="p">);</span>
+
+        <span class="k">let</span> <span class="n">task</span> <span class="o">=</span> <span class="nn">tokio</span><span class="p">::</span><span class="nf">spawn</span><span class="p">(</span><span class="k">async</span> <span class="k">move</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="k">mut</span> <span class="n">feeder</span> <span class="o">=</span> <span class="nn">GenericFeeder</span><span class="p">::</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="n">cache_clone</span><span class="nf">.execute</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">feeder</span><span class="p">,</span> <span class="o">&amp;*</span><span class="n">repo_clone</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span><span class="p">)</span><span class="k">.await</span><span class="nf">.is_ok</span><span class="p">()</span> <span class="p">{</span>
+                <span class="n">feeder</span><span class="py">.entity</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nb">None</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+
+        <span class="n">tasks</span><span class="nf">.push</span><span class="p">(</span><span class="n">task</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">results</span> <span class="o">=</span> <span class="nd">vec!</span><span class="p">[];</span>
+    <span class="k">for</span> <span class="n">task</span> <span class="k">in</span> <span class="n">tasks</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">=</span> <span class="n">task</span><span class="k">.await</span> <span class="p">{</span>
+            <span class="n">results</span><span class="nf">.push</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">results</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="CONTRIBUTING.md">CONTRIBUTING.md</a> - How to extend the framework</li>
+  <li><a href="TESTING.md">TESTING.md</a> - Testing strategies</li>
+  <li><a href="README.md">README.md</a> - Quick start guide</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/cache-kit.rs/guides/contributing/" class="pagination--pager" title="Contributing Guide">Previous</a>
+    
+    
+      <a href="/cache-kit.rs/guides/index/" class="pagination--pager" title="Guides">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://github.com/megamsys/cache-kit.rs" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://crates.io/crates/cache-kit" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-box" aria-hidden="true"></i> crates.io</a></li>
+        
+      
+    
+
+    
+      <li><a href="/cache-kit.rs/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">cache-kit</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/cache-kit.rs/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/cache-kit.rs/assets/js/lunr/lunr.min.js"></script>
+<script src="/cache-kit.rs/assets/js/lunr/lunr-store.js"></script>
+<script src="/cache-kit.rs/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  </body>
+</html>

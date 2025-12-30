@@ -1,0 +1,988 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.3 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-US" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Database &amp; ORM Compatibility | cache-kit</title>
+<meta name="description" content="Using cache-kit with different ORMs and database layers">
+
+
+  <meta name="author" content="Kishore Kumar Neelamegam">
+  
+  <meta property="article:author" content="Kishore Kumar Neelamegam">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="cache-kit">
+<meta property="og:title" content="Database &amp; ORM Compatibility">
+<meta property="og:url" content="http://localhost:4000/cache-kit.rs/database-compatibility/">
+
+
+  <meta property="og:description" content="Using cache-kit with different ORMs and database layers">
+
+
+
+
+
+  <meta name="twitter:site" content="@indykish">
+  <meta name="twitter:title" content="Database &amp; ORM Compatibility">
+  <meta name="twitter:description" content="Using cache-kit with different ORMs and database layers">
+  <meta name="twitter:url" content="http://localhost:4000/cache-kit.rs/database-compatibility/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2025-12-30T14:31:20+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/cache-kit.rs/database-compatibility/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/cache-kit.rs/feed.xml" type="application/atom+xml" rel="alternate" title="cache-kit Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/cache-kit.rs/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/cache-kit.rs/">
+          cache-kit
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/cache-kit.rs/"
+                
+                
+              >Documentation</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cache-kit.rs/installation"
+                
+                
+              >Installation</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cache-kit.rs/concepts"
+                
+                
+              >Concepts</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cache-kit.rs/guides/"
+                
+                
+              >Guides</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="https://github.com/megamsys/cache-kit.rs"
+                
+                
+              >GitHub</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      <nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <span class="nav__sub-title">Getting Started</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/cache-kit.rs/">Introduction</a></li>
+            
+              <li><a href="/cache-kit.rs/installation">Installation</a></li>
+            
+              <li><a href="/cache-kit.rs/concepts">Core Concepts</a></li>
+            
+          </ul>
+          
+        </li>
+      
+        <li>
+          
+            <span class="nav__sub-title">Architecture</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/cache-kit.rs/design-principles">Design Principles</a></li>
+            
+              <li><a href="/cache-kit.rs/async-model">Async Model</a></li>
+            
+              <li><a href="/cache-kit.rs/serialization">Serialization</a></li>
+            
+          </ul>
+          
+        </li>
+      
+        <li>
+          
+            <span class="nav__sub-title">Integration</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/cache-kit.rs/database-compatibility">Database Compatibility</a></li>
+            
+              <li><a href="/cache-kit.rs/api-frameworks">API Frameworks</a></li>
+            
+              <li><a href="/cache-kit.rs/backends">Cache Backends</a></li>
+            
+          </ul>
+          
+        </li>
+      
+        <li>
+          
+            <span class="nav__sub-title">Guides</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/cache-kit.rs/guides/">All Guides</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/examples">Examples</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/testing">Testing</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/performance">Performance</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/monitoring">Monitoring</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/troubleshooting">Troubleshooting</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/contributing">Contributing</a></li>
+            
+          </ul>
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Database &amp; ORM Compatibility">
+    <meta itemprop="description" content="">
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="http://localhost:4000/cache-kit.rs/database-compatibility/" itemprop="url">Database &amp; ORM Compatibility
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <hr />
+
+<h2 id="orm-agnostic-design">ORM-Agnostic Design</h2>
+
+<p>cache-kit does <strong>not depend on ORMs</strong>.</p>
+
+<p>It operates on three simple concepts:</p>
+<ul>
+  <li><strong>Serializable entities</strong> — Any type implementing <code class="language-plaintext highlighter-rouge">CacheEntity</code></li>
+  <li><strong>Deterministic cache keys</strong> — Consistent identifiers</li>
+  <li><strong>Explicit cache boundaries</strong> — Clear separation via <code class="language-plaintext highlighter-rouge">CacheFeed</code></li>
+</ul>
+
+<p>This means:</p>
+<ul>
+  <li>✅ Swap ORMs without changing cache logic</li>
+  <li>✅ Use multiple ORMs in the same application</li>
+  <li>✅ Cache data from any source (DB, API, file system)</li>
+</ul>
+
+<hr />
+
+<h2 id="supported-orms--database-layers">Supported ORMs &amp; Database Layers</h2>
+
+<h3 id="tier-1-recommended-with-examples">Tier-1: Recommended (with Examples)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>ORM</th>
+      <th>Status</th>
+      <th>Example</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SQLx</strong></td>
+      <td>✅ Full Support</td>
+      <td><a href="https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx">actixsqlx</a></td>
+      <td>Async-first, compile-time checked SQL</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="tier-1-compatible-community-examples-welcome">Tier-1: Compatible (Community Examples Welcome)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>ORM</th>
+      <th>Status</th>
+      <th>Example</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SeaORM</strong></td>
+      <td>✅ Compatible</td>
+      <td>Community contributions welcome</td>
+      <td>Async ORM with migrations</td>
+    </tr>
+    <tr>
+      <td><strong>Diesel</strong></td>
+      <td>✅ Compatible</td>
+      <td>Community contributions welcome</td>
+      <td>Mature, type-safe ORM</td>
+    </tr>
+    <tr>
+      <td><strong>tokio-postgres</strong></td>
+      <td>✅ Compatible</td>
+      <td>Works with any database layer</td>
+      <td>Pure async PostgreSQL client</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="tier-2-any-database-layer">Tier-2: Any Database Layer</h3>
+
+<p>cache-kit works with <strong>any</strong> Rust code that can:</p>
+<ol>
+  <li>Fetch entities by ID</li>
+  <li>Return <code class="language-plaintext highlighter-rouge">Option&lt;T&gt;</code> (entity or not found)</li>
+  <li>Implement <code class="language-plaintext highlighter-rouge">DataRepository&lt;T&gt;</code> trait</li>
+</ol>
+
+<p>This includes:</p>
+<ul>
+  <li>Custom SQL builders</li>
+  <li>NoSQL databases (MongoDB, DynamoDB)</li>
+  <li>REST API clients</li>
+  <li>File-based storage</li>
+  <li>In-memory data structures</li>
+</ul>
+
+<hr />
+
+<h2 id="conceptual-flow">Conceptual Flow</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌─────────────────────┐
+│ Database / ORM      │ ← Your choice
+└──────────┬──────────┘
+           │
+           ↓ Fetch entities
+┌─────────────────────┐
+│ Domain Entities     │ ← impl CacheEntity
+└──────────┬──────────┘
+           │
+           ↓ Cache operations
+┌─────────────────────┐
+│ cache-kit           │ ← Framework-agnostic
+└──────────┬──────────┘
+           │
+           ↓ Store/retrieve
+┌─────────────────────┐
+│ Cache Backend       │ ← Redis, Memcached, InMemory
+└─────────────────────┘
+</code></pre></div></div>
+
+<p><strong>Key principle:</strong> Database models live in your database layer, cache-kit just coordinates caching.</p>
+
+<hr />
+
+<h2 id="sqlx-integration">SQLx Integration</h2>
+
+<p>SQLx is an async, compile-time checked SQL library. It’s the recommended database layer for new projects.</p>
+
+<h3 id="installation">Installation</h3>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[dependencies]</span>
+<span class="py">cache-kit</span> <span class="p">=</span> <span class="s">"0.9"</span>
+<span class="nn">sqlx</span> <span class="o">=</span> <span class="p">{</span> <span class="py">version</span> <span class="p">=</span> <span class="s">"0.8"</span><span class="p">,</span> <span class="py">features</span> <span class="p">=</span> <span class="p">[</span><span class="s">"runtime-tokio"</span><span class="p">,</span> <span class="s">"postgres"</span><span class="p">,</span> <span class="s">"uuid"</span><span class="p">,</span> <span class="s">"chrono"</span><span class="p">]</span> <span class="p">}</span>
+<span class="nn">tokio</span> <span class="o">=</span> <span class="p">{</span> <span class="py">version</span> <span class="p">=</span> <span class="s">"1.41"</span><span class="p">,</span> <span class="py">features</span> <span class="p">=</span> <span class="nn">["full"]</span> <span class="p">}</span>
+<span class="nn">serde</span> <span class="o">=</span> <span class="p">{</span> <span class="py">version</span> <span class="p">=</span> <span class="s">"0.9"</span><span class="p">,</span> <span class="py">features</span> <span class="p">=</span> <span class="nn">["derive"]</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="entity-definition">Entity Definition</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">serde</span><span class="p">::{</span><span class="n">Deserialize</span><span class="p">,</span> <span class="n">Serialize</span><span class="p">};</span>
+<span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="n">CacheEntity</span><span class="p">;</span>
+
+<span class="nd">#[derive(Clone,</span> <span class="nd">Serialize,</span> <span class="nd">Deserialize,</span> <span class="nd">sqlx::FromRow)]</span>
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">User</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="n">id</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">username</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">email</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">created_at</span><span class="p">:</span> <span class="nn">chrono</span><span class="p">::</span><span class="n">DateTime</span><span class="o">&lt;</span><span class="nn">chrono</span><span class="p">::</span><span class="n">Utc</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">CacheEntity</span> <span class="k">for</span> <span class="n">User</span> <span class="p">{</span>
+    <span class="k">type</span> <span class="n">Key</span> <span class="o">=</span> <span class="nb">String</span><span class="p">;</span>
+
+    <span class="k">fn</span> <span class="nf">cache_key</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="k">Self</span><span class="p">::</span><span class="n">Key</span> <span class="p">{</span>
+        <span class="k">self</span><span class="py">.id</span><span class="nf">.clone</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">fn</span> <span class="nf">cache_prefix</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">&amp;</span><span class="k">'static</span> <span class="nb">str</span> <span class="p">{</span>
+        <span class="s">"user"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="repository-implementation">Repository Implementation</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="n">DataRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">sqlx</span><span class="p">::</span><span class="n">PgPool</span><span class="p">;</span>
+
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">UserRepository</span> <span class="p">{</span>
+    <span class="n">pool</span><span class="p">:</span> <span class="n">PgPool</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">UserRepository</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">new</span><span class="p">(</span><span class="n">pool</span><span class="p">:</span> <span class="n">PgPool</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="k">Self</span> <span class="p">{</span>
+        <span class="k">Self</span> <span class="p">{</span> <span class="n">pool</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">pub</span> <span class="k">async</span> <span class="k">fn</span> <span class="nf">create</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">User</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="nn">sqlx</span><span class="p">::</span><span class="n">Error</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="nn">sqlx</span><span class="p">::</span><span class="nd">query_as!</span><span class="p">(</span>
+            <span class="n">User</span><span class="p">,</span>
+            <span class="s">r#"
+            INSERT INTO users (id, username, email)
+            VALUES ($1, $2, $3)
+            RETURNING *
+            "#</span><span class="p">,</span>
+            <span class="n">user</span><span class="py">.id</span><span class="p">,</span>
+            <span class="n">user</span><span class="py">.username</span><span class="p">,</span>
+            <span class="n">user</span><span class="py">.email</span>
+        <span class="p">)</span>
+        <span class="nf">.fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="py">.pool</span><span class="p">)</span>
+        <span class="k">.await</span>
+    <span class="p">}</span>
+
+    <span class="k">pub</span> <span class="k">async</span> <span class="k">fn</span> <span class="nf">update</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">User</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="nn">sqlx</span><span class="p">::</span><span class="n">Error</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="nn">sqlx</span><span class="p">::</span><span class="nd">query_as!</span><span class="p">(</span>
+            <span class="n">User</span><span class="p">,</span>
+            <span class="s">r#"
+            UPDATE users
+            SET username = $2, email = $3
+            WHERE id = $1
+            RETURNING *
+            "#</span><span class="p">,</span>
+            <span class="n">user</span><span class="py">.id</span><span class="p">,</span>
+            <span class="n">user</span><span class="py">.username</span><span class="p">,</span>
+            <span class="n">user</span><span class="py">.email</span>
+        <span class="p">)</span>
+        <span class="nf">.fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="py">.pool</span><span class="p">)</span>
+        <span class="k">.await</span>
+    <span class="p">}</span>
+
+    <span class="k">pub</span> <span class="k">async</span> <span class="k">fn</span> <span class="nf">delete</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span> <span class="nn">sqlx</span><span class="p">::</span><span class="n">Error</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="nn">sqlx</span><span class="p">::</span><span class="nd">query!</span><span class="p">(</span><span class="s">"DELETE FROM users WHERE id = $1"</span><span class="p">,</span> <span class="n">id</span><span class="p">)</span>
+            <span class="nf">.execute</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="py">.pool</span><span class="p">)</span>
+            <span class="k">.await</span><span class="o">?</span><span class="p">;</span>
+        <span class="nf">Ok</span><span class="p">(())</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">UserRepository</span> <span class="p">{</span>
+    <span class="k">async</span> <span class="k">fn</span> <span class="nf">fetch_by_id</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">String</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="n">user</span> <span class="o">=</span> <span class="nn">sqlx</span><span class="p">::</span><span class="nd">query_as!</span><span class="p">(</span>
+            <span class="n">User</span><span class="p">,</span>
+            <span class="s">"SELECT * FROM users WHERE id = $1"</span><span class="p">,</span>
+            <span class="n">id</span>
+        <span class="p">)</span>
+        <span class="nf">.fetch_optional</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="py">.pool</span><span class="p">)</span>
+        <span class="k">.await</span>
+        <span class="nf">.map_err</span><span class="p">(|</span><span class="n">e</span><span class="p">|</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nn">Error</span><span class="p">::</span><span class="nf">RepositoryError</span><span class="p">(</span><span class="n">e</span><span class="nf">.to_string</span><span class="p">()))</span><span class="o">?</span><span class="p">;</span>
+
+        <span class="nf">Ok</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="usage-in-service-layer">Usage in Service Layer</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::{</span><span class="n">CacheService</span><span class="p">,</span> <span class="n">CacheFeed</span><span class="p">,</span> <span class="n">DataRepository</span><span class="p">,</span> <span class="nn">strategy</span><span class="p">::</span><span class="n">CacheStrategy</span><span class="p">};</span>
+<span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nn">backend</span><span class="p">::</span><span class="n">InMemoryBackend</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">sync</span><span class="p">::</span><span class="nb">Arc</span><span class="p">;</span>
+
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">UserService</span> <span class="p">{</span>
+    <span class="n">cache</span><span class="p">:</span> <span class="n">CacheService</span><span class="o">&lt;</span><span class="n">InMemoryBackend</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">repo</span><span class="p">:</span> <span class="nb">Arc</span><span class="o">&lt;</span><span class="n">UserRepository</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">UserService</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="k">async</span> <span class="k">fn</span> <span class="nf">get_user</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="k">mut</span> <span class="n">feeder</span> <span class="o">=</span> <span class="n">UserFeeder</span> <span class="p">{</span>
+            <span class="n">id</span><span class="p">:</span> <span class="n">id</span><span class="nf">.to_string</span><span class="p">(),</span>
+            <span class="n">user</span><span class="p">:</span> <span class="nb">None</span><span class="p">,</span>
+        <span class="p">};</span>
+
+        <span class="k">self</span><span class="py">.cache</span>
+            <span class="nf">.execute</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">feeder</span><span class="p">,</span> <span class="o">&amp;*</span><span class="k">self</span><span class="py">.repo</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span><span class="p">)</span>
+            <span class="k">.await</span><span class="o">?</span><span class="p">;</span>
+
+        <span class="nf">Ok</span><span class="p">(</span><span class="n">feeder</span><span class="py">.user</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>See the full <a href="https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx">Actix + SQLx example</a> for a complete implementation.</p>
+
+<hr />
+
+<h2 id="seaorm-integration">SeaORM Integration</h2>
+<p>use std::sync::Arc;
+use cache_kit::{CacheExpander, strategy::CacheStrategy};
+use cache_kit::backend::InMemoryBackend;</p>
+
+<p>pub struct UserService {
+    repo: Arc<UserRepository>,
+    cache: Arc&lt;CacheExpander<InMemoryBackend>&gt;,
+}</InMemoryBackend></UserRepository></p>
+
+<p>impl UserService {
+    pub fn new(repo: Arc<UserRepository>, cache: Arc&lt;CacheExpander<InMemoryBackend>&gt;) -&gt; Self {
+        Self { repo, cache }
+    }</InMemoryBackend></UserRepository></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pub async fn get(&amp;self, id: &amp;str) -&gt; cache_kit::Result&lt;Option&lt;User&gt;&gt; {
+    let mut feeder = UserFeeder {
+        id: id.to_string(),
+        user: None,
+    };
+
+    self.cache.with(&amp;mut feeder, &amp;*self.repo, CacheStrategy::Refresh)?;
+
+    Ok(feeder.user)
+}
+
+pub async fn create(&amp;self, user: User) -&gt; cache_kit::Result&lt;User&gt; {
+    // 1. Insert into database
+    let created = self.repo.create(&amp;user).await
+        .map_err(|e| cache_kit::Error::RepositoryError(e.to_string()))?;
+
+    // 2. Cache the new entity
+    let mut feeder = UserFeeder {
+        id: created.id.clone(),
+        user: Some(created.clone()),
+    };
+    self.cache.with(&amp;mut feeder, &amp;*self.repo, CacheStrategy::Refresh)?;
+
+    Ok(created)
+}
+
+pub async fn update(&amp;self, user: User) -&gt; cache_kit::Result&lt;User&gt; {
+    // 1. Update database
+    let updated = self.repo.update(&amp;user).await
+        .map_err(|e| cache_kit::Error::RepositoryError(e.to_string()))?;
+
+    // 2. Invalidate cache and fetch fresh
+    let mut feeder = UserFeeder {
+        id: updated.id.clone(),
+        user: None,
+    };
+    self.cache.with(&amp;mut feeder, &amp;*self.repo, CacheStrategy::Invalidate)?;
+
+    Ok(updated)
+}
+
+pub async fn delete(&amp;self, id: &amp;str) -&gt; cache_kit::Result&lt;()&gt; {
+    // 1. Delete from database
+    self.repo.delete(id).await
+        .map_err(|e| cache_kit::Error::RepositoryError(e.to_string()))?;
+
+    // 2. Invalidate cache
+    let mut feeder = UserFeeder {
+        id: id.to_string(),
+        user: None,
+    };
+    self.cache.with(&amp;mut feeder, &amp;*self.repo, CacheStrategy::Invalidate)?;
+
+    Ok(())
+} } ```
+</code></pre></div></div>
+
+<p>See the complete <a href="https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx">actixsqlx example</a> for a full working implementation.</p>
+
+<hr />
+
+<h2 id="seaorm-integration-1">SeaORM Integration</h2>
+
+<p>SeaORM is an async ORM with migrations and schema management.</p>
+
+<h3 id="entity-definition-1">Entity Definition</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">sea_orm</span><span class="p">::</span><span class="nn">entity</span><span class="p">::</span><span class="nn">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">serde</span><span class="p">::{</span><span class="n">Deserialize</span><span class="p">,</span> <span class="n">Serialize</span><span class="p">};</span>
+<span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="n">CacheEntity</span><span class="p">;</span>
+
+<span class="nd">#[derive(Clone,</span> <span class="nd">Debug,</span> <span class="nd">PartialEq,</span> <span class="nd">DeriveEntityModel,</span> <span class="nd">Serialize,</span> <span class="nd">Deserialize)]</span>
+<span class="nd">#[sea_orm(table_name</span> <span class="nd">=</span> <span class="s">"users"</span><span class="nd">)]</span>
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">Model</span> <span class="p">{</span>
+    <span class="nd">#[sea_orm(primary_key)]</span>
+    <span class="k">pub</span> <span class="n">id</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">username</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">email</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nd">#[derive(Copy,</span> <span class="nd">Clone,</span> <span class="nd">Debug,</span> <span class="nd">EnumIter,</span> <span class="nd">DeriveRelation)]</span>
+<span class="k">pub</span> <span class="k">enum</span> <span class="n">Relation</span> <span class="p">{}</span>
+
+<span class="k">impl</span> <span class="n">ActiveModelBehavior</span> <span class="k">for</span> <span class="n">ActiveModel</span> <span class="p">{}</span>
+
+<span class="c1">// Implement CacheEntity for the SeaORM Model</span>
+<span class="k">impl</span> <span class="n">CacheEntity</span> <span class="k">for</span> <span class="n">Model</span> <span class="p">{</span>
+    <span class="k">type</span> <span class="n">Key</span> <span class="o">=</span> <span class="nb">String</span><span class="p">;</span>
+
+    <span class="k">fn</span> <span class="nf">cache_key</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="k">Self</span><span class="p">::</span><span class="n">Key</span> <span class="p">{</span>
+        <span class="k">self</span><span class="py">.id</span><span class="nf">.clone</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">fn</span> <span class="nf">cache_prefix</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">&amp;</span><span class="k">'static</span> <span class="nb">str</span> <span class="p">{</span>
+        <span class="s">"user"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="repository-implementation-1">Repository Implementation</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">sea_orm</span><span class="p">::{</span><span class="n">DatabaseConnection</span><span class="p">,</span> <span class="n">EntityTrait</span><span class="p">};</span>
+<span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="n">DataRepository</span><span class="p">;</span>
+
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">UserRepository</span> <span class="p">{</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">DatabaseConnection</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="nn">user</span><span class="p">::</span><span class="n">Model</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">UserRepository</span> <span class="p">{</span>
+    <span class="k">async</span> <span class="k">fn</span> <span class="nf">fetch_by_id</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">String</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="nn">user</span><span class="p">::</span><span class="n">Model</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="n">user</span> <span class="o">=</span> <span class="nn">user</span><span class="p">::</span><span class="nn">Entity</span><span class="p">::</span><span class="nf">find_by_id</span><span class="p">(</span><span class="n">id</span><span class="nf">.clone</span><span class="p">())</span>
+            <span class="nf">.one</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="py">.db</span><span class="p">)</span>
+            <span class="k">.await</span>
+            <span class="nf">.map_err</span><span class="p">(|</span><span class="n">e</span><span class="p">|</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nn">Error</span><span class="p">::</span><span class="nf">RepositoryError</span><span class="p">(</span><span class="n">e</span><span class="nf">.to_string</span><span class="p">()))</span><span class="o">?</span><span class="p">;</span>
+
+        <span class="nf">Ok</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Community contributions welcome!</strong> Share your SeaORM + cache-kit examples.</p>
+
+<hr />
+
+<h2 id="diesel-integration">Diesel Integration</h2>
+
+<p>Diesel is a mature, type-safe ORM with excellent compile-time guarantees.</p>
+
+<h3 id="entity-definition-2">Entity Definition</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">diesel</span><span class="p">::</span><span class="nn">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">serde</span><span class="p">::{</span><span class="n">Deserialize</span><span class="p">,</span> <span class="n">Serialize</span><span class="p">};</span>
+<span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="n">CacheEntity</span><span class="p">;</span>
+
+<span class="nd">#[derive(Queryable,</span> <span class="nd">Selectable,</span> <span class="nd">Clone,</span> <span class="nd">Serialize,</span> <span class="nd">Deserialize)]</span>
+<span class="nd">#[diesel(table_name</span> <span class="nd">=</span> <span class="nd">users)]</span>
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">User</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="n">id</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">username</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">email</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">CacheEntity</span> <span class="k">for</span> <span class="n">User</span> <span class="p">{</span>
+    <span class="k">type</span> <span class="n">Key</span> <span class="o">=</span> <span class="nb">String</span><span class="p">;</span>
+
+    <span class="k">fn</span> <span class="nf">cache_key</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="k">Self</span><span class="p">::</span><span class="n">Key</span> <span class="p">{</span>
+        <span class="k">self</span><span class="py">.id</span><span class="nf">.clone</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">fn</span> <span class="nf">cache_prefix</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">&amp;</span><span class="k">'static</span> <span class="nb">str</span> <span class="p">{</span>
+        <span class="s">"user"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="repository-implementation-sync">Repository Implementation (Sync)</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">diesel</span><span class="p">::</span><span class="nn">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">diesel</span><span class="p">::</span><span class="nn">r2d2</span><span class="p">::{</span><span class="n">ConnectionManager</span><span class="p">,</span> <span class="n">Pool</span><span class="p">};</span>
+<span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="n">DataRepository</span><span class="p">;</span>
+
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">UserRepository</span> <span class="p">{</span>
+    <span class="n">pool</span><span class="p">:</span> <span class="n">Pool</span><span class="o">&lt;</span><span class="n">ConnectionManager</span><span class="o">&lt;</span><span class="n">PgConnection</span><span class="o">&gt;&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">UserRepository</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">fetch_by_id</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">String</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+        <span class="k">use</span> <span class="k">crate</span><span class="p">::</span><span class="nn">schema</span><span class="p">::</span><span class="nn">users</span><span class="p">::</span><span class="nn">dsl</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+
+        <span class="k">let</span> <span class="k">mut</span> <span class="n">conn</span> <span class="o">=</span> <span class="k">self</span><span class="py">.pool</span><span class="nf">.get</span><span class="p">()</span>
+            <span class="nf">.map_err</span><span class="p">(|</span><span class="n">e</span><span class="p">|</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nn">Error</span><span class="p">::</span><span class="nf">RepositoryError</span><span class="p">(</span><span class="n">e</span><span class="nf">.to_string</span><span class="p">()))</span><span class="o">?</span><span class="p">;</span>
+
+        <span class="k">let</span> <span class="n">user</span> <span class="o">=</span> <span class="n">users</span>
+            <span class="nf">.filter</span><span class="p">(</span><span class="n">id</span><span class="nf">.eq</span><span class="p">(</span><span class="n">id</span><span class="p">))</span>
+            <span class="py">.first</span><span class="p">::</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">conn</span><span class="p">)</span>
+            <span class="nf">.optional</span><span class="p">()</span>
+            <span class="nf">.map_err</span><span class="p">(|</span><span class="n">e</span><span class="p">|</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nn">Error</span><span class="p">::</span><span class="nf">RepositoryError</span><span class="p">(</span><span class="n">e</span><span class="nf">.to_string</span><span class="p">()))</span><span class="o">?</span><span class="p">;</span>
+
+        <span class="nf">Ok</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Note:</strong> Diesel is synchronous, which works perfectly with cache-kit’s sync <code class="language-plaintext highlighter-rouge">DataRepository</code> trait.</p>
+
+<p><strong>Community contributions welcome!</strong> Share your Diesel + cache-kit examples.</p>
+
+<hr />
+
+<h2 id="custom-database-layer">Custom Database Layer</h2>
+
+<p>cache-kit works with any custom database layer:</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="n">DataRepository</span><span class="p">;</span>
+
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">CustomRepository</span> <span class="p">{</span>
+    <span class="c1">// Your custom database client</span>
+    <span class="n">client</span><span class="p">:</span> <span class="n">MyDatabaseClient</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">MyEntity</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">CustomRepository</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">fetch_by_id</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">MyEntityId</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">MyEntity</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+        <span class="c1">// Your custom fetching logic</span>
+        <span class="k">match</span> <span class="k">self</span><span class="py">.client</span><span class="nf">.query</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nf">Ok</span><span class="p">(</span><span class="nf">Some</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="k">=&gt;</span> <span class="nf">Ok</span><span class="p">(</span><span class="nf">Some</span><span class="p">(</span><span class="nn">MyEntity</span><span class="p">::</span><span class="nf">from</span><span class="p">(</span><span class="n">data</span><span class="p">))),</span>
+            <span class="nf">Ok</span><span class="p">(</span><span class="nb">None</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="nf">Ok</span><span class="p">(</span><span class="nb">None</span><span class="p">),</span>
+            <span class="nf">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="nf">Err</span><span class="p">(</span><span class="nn">cache_kit</span><span class="p">::</span><span class="nn">Error</span><span class="p">::</span><span class="nf">RepositoryError</span><span class="p">(</span><span class="n">e</span><span class="nf">.to_string</span><span class="p">())),</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="database-best-practices">Database Best Practices</h2>
+
+<h3 id="separate-concerns">Separate Concerns</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ Good:
+    Database Models → Repository → Cache → Service → API
+
+❌ Bad:
+    Database Models with embedded cache logic
+</code></pre></div></div>
+
+<h3 id="repository-pattern">Repository Pattern</h3>
+
+<p>Keep repositories focused on data access:</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">impl</span> <span class="n">UserRepository</span> <span class="p">{</span>
+    <span class="c1">// ✅ Simple, focused data access</span>
+    <span class="k">pub</span> <span class="k">async</span> <span class="k">fn</span> <span class="nf">find_by_id</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">DbError</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="nn">sqlx</span><span class="p">::</span><span class="nd">query_as!</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="k">.await</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ❌ Don't mix cache logic in repository</span>
+    <span class="k">pub</span> <span class="k">async</span> <span class="k">fn</span> <span class="nf">find_by_id_cached</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">DbError</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="c1">// BAD: Repository shouldn't know about caching</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="error-handling">Error Handling</h3>
+
+<p>Convert database errors to cache-kit errors:</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">impl</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">UserRepository</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">fetch_by_id</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">String</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+        <span class="k">self</span><span class="nf">.internal_fetch</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+            <span class="nf">.map_err</span><span class="p">(|</span><span class="n">e</span><span class="p">|</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nn">Error</span><span class="p">::</span><span class="nf">RepositoryError</span><span class="p">(</span><span class="n">e</span><span class="nf">.to_string</span><span class="p">()))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="database-migrations">Database Migrations</h2>
+
+<p>cache-kit does not handle database migrations. Use your ORM’s migration tools:</p>
+
+<h3 id="sqlx">SQLx</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sqlx migrate add create_users_table
+</code></pre></div></div>
+
+<p>Edit <code class="language-plaintext highlighter-rouge">migrations/001_create_users_table.sql</code>:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">username</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">UNIQUE</span><span class="p">,</span>
+    <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">UNIQUE</span><span class="p">,</span>
+    <span class="n">created_at</span> <span class="n">TIMESTAMPTZ</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="n">NOW</span><span class="p">()</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_users_username</span> <span class="k">ON</span> <span class="n">users</span><span class="p">(</span><span class="n">username</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_users_email</span> <span class="k">ON</span> <span class="n">users</span><span class="p">(</span><span class="n">email</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Run migrations:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sqlx migrate run <span class="nt">--database-url</span> postgres://localhost/mydb
+</code></pre></div></div>
+
+<h3 id="seaorm">SeaORM</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sea-orm-cli migrate generate create_users_table
+</code></pre></div></div>
+
+<h3 id="diesel">Diesel</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diesel migration generate create_users_table
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="next-steps">Next Steps</h2>
+
+<ul>
+  <li>Learn about <a href="api-frameworks">API Frameworks and Transport Layers</a></li>
+  <li>Explore <a href="serialization">Serialization options</a></li>
+  <li>Review <a href="backends">Cache backend choices</a></li>
+  <li>See the <a href="https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx">Actix + SQLx reference implementation</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/cache-kit.rs/concepts/" class="pagination--pager" title="Core Concepts">Previous</a>
+    
+    
+      <a href="/cache-kit.rs/design-principles/" class="pagination--pager" title="Positioning &amp; Design Principles">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://github.com/megamsys/cache-kit.rs" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://crates.io/crates/cache-kit" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-box" aria-hidden="true"></i> crates.io</a></li>
+        
+      
+    
+
+    
+      <li><a href="/cache-kit.rs/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">cache-kit</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/cache-kit.rs/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/cache-kit.rs/assets/js/lunr/lunr.min.js"></script>
+<script src="/cache-kit.rs/assets/js/lunr/lunr-store.js"></script>
+<script src="/cache-kit.rs/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  </body>
+</html>

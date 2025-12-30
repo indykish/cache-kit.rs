@@ -1,0 +1,729 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.3 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-US" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Introduction | cache-kit</title>
+<meta name="description" content="cache-kit is an async, ORM-agnostic caching library for Rust services">
+
+
+  <meta name="author" content="Kishore Kumar Neelamegam">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="cache-kit">
+<meta property="og:title" content="Introduction">
+<meta property="og:url" content="http://localhost:4000/cache-kit.rs/">
+
+
+  <meta property="og:description" content="cache-kit is an async, ORM-agnostic caching library for Rust services">
+
+
+
+
+
+  <meta name="twitter:site" content="@indykish">
+  <meta name="twitter:title" content="Introduction">
+  <meta name="twitter:description" content="cache-kit is an async, ORM-agnostic caching library for Rust services">
+  <meta name="twitter:url" content="http://localhost:4000/cache-kit.rs/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/cache-kit.rs/">
+
+
+
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+    "url": "http://localhost:4000/cache-kit.rs/",
+    "sameAs": ["https://github.com/megamsys/cache-kit.rs","https://x.com/indykish"]
+}
+</script>
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/cache-kit.rs/feed.xml" type="application/atom+xml" rel="alternate" title="cache-kit Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/cache-kit.rs/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/cache-kit.rs/">
+          cache-kit
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/cache-kit.rs/"
+                
+                
+              >Documentation</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cache-kit.rs/installation"
+                
+                
+              >Installation</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cache-kit.rs/concepts"
+                
+                
+              >Concepts</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cache-kit.rs/guides/"
+                
+                
+              >Guides</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="https://github.com/megamsys/cache-kit.rs"
+                
+                
+              >GitHub</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      <nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <span class="nav__sub-title">Getting Started</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/cache-kit.rs/" class="active">Introduction</a></li>
+            
+              <li><a href="/cache-kit.rs/installation">Installation</a></li>
+            
+              <li><a href="/cache-kit.rs/concepts">Core Concepts</a></li>
+            
+          </ul>
+          
+        </li>
+      
+        <li>
+          
+            <span class="nav__sub-title">Architecture</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/cache-kit.rs/design-principles">Design Principles</a></li>
+            
+              <li><a href="/cache-kit.rs/async-model">Async Model</a></li>
+            
+              <li><a href="/cache-kit.rs/serialization">Serialization</a></li>
+            
+          </ul>
+          
+        </li>
+      
+        <li>
+          
+            <span class="nav__sub-title">Integration</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/cache-kit.rs/database-compatibility">Database Compatibility</a></li>
+            
+              <li><a href="/cache-kit.rs/api-frameworks">API Frameworks</a></li>
+            
+              <li><a href="/cache-kit.rs/backends">Cache Backends</a></li>
+            
+          </ul>
+          
+        </li>
+      
+        <li>
+          
+            <span class="nav__sub-title">Guides</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/cache-kit.rs/guides/">All Guides</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/examples">Examples</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/testing">Testing</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/performance">Performance</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/monitoring">Monitoring</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/troubleshooting">Troubleshooting</a></li>
+            
+              <li><a href="/cache-kit.rs/guides/contributing">Contributing</a></li>
+            
+          </ul>
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Introduction">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="http://localhost:4000/cache-kit.rs/" itemprop="url">Introduction
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="cache-kit">cache-kit</h1>
+
+<p>An async, ORM-agnostic caching library for Rust that helps you place <strong>clear cache boundaries</strong> between your database and application logic.</p>
+
+<p><a href="installation" class="btn btn-primary">Get Started</a>
+<a href="https://github.com/megamsys/cache-kit.rs" class="btn">View on GitHub</a></p>
+
+<hr />
+
+<h2 id="what-cache-kit-is">What cache-kit Is</h2>
+
+<p>cache-kit is designed for modern Rust services that:</p>
+<ul>
+  <li>Use async runtimes (tokio)</li>
+  <li>Talk to databases through ORMs or query builders</li>
+  <li>Expose functionality via REST, gRPC, background workers, or API services</li>
+</ul>
+
+<p>cache-kit focuses on <strong>how caching fits into your system</strong>, not on owning your framework, transport, or persistence layer.</p>
+
+<h3 id="key-characteristics">Key Characteristics</h3>
+
+<ul>
+  <li><strong>Async-first and runtime-friendly</strong> — Built for tokio-based applications</li>
+  <li><strong>ORM-agnostic</strong> — Works with any database layer</li>
+  <li><strong>Backend-agnostic</strong> — Swap between Redis, Memcached, InMemory without code changes</li>
+  <li><strong>Safe to embed</strong> — Use inside libraries, SDKs, and services</li>
+  <li><strong>Explicit boundaries</strong> — Clear cache ownership and behavior</li>
+</ul>
+
+<p>cache-kit sits <strong>between your database access and your application logic</strong>, not inside your HTTP framework or ORM.</p>
+
+<hr />
+
+<h2 id="what-cache-kit-is-not">What cache-kit Is Not</h2>
+
+<p>cache-kit deliberately does <strong>not</strong>:</p>
+
+<ul>
+  <li>Replace ORMs or query builders</li>
+  <li>Depend on HTTP, REST, or web frameworks</li>
+  <li>Hide cache behavior behind implicit magic</li>
+  <li>Claim strong consistency across distributed backends</li>
+  <li>Act as a full application framework</li>
+</ul>
+
+<p>If you are looking for an all-in-one web stack, cache-kit is not that.</p>
+
+<hr />
+
+<h2 id="where-cache-kit-fits">Where cache-kit Fits</h2>
+
+<p>A typical async Rust service using cache-kit looks like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Database / ORM
+      ↓
+Domain Entities
+      ↓
+  cache-kit
+      ↓
+Cache Backend
+      ↓
+Application Logic
+      ↓
+REST / gRPC / Workers / API Services
+</code></pre></div></div>
+
+<p>The same cached logic can be reused across:</p>
+<ul>
+  <li>REST endpoints</li>
+  <li>gRPC services</li>
+  <li>Background jobs</li>
+  <li>Agent or API services layered on top of your data</li>
+</ul>
+
+<hr />
+
+<h2 id="async-first-by-design">Async-First by Design</h2>
+
+<p>cache-kit is built for async Rust:</p>
+
+<ul>
+  <li>Designed to work with <code class="language-plaintext highlighter-rouge">tokio</code>-based applications</li>
+  <li>Compatible with async ORMs like SQLx and SeaORM</li>
+  <li>Does not manage or impose a runtime</li>
+</ul>
+
+<p>You bring your runtime — cache-kit fits into it.</p>
+
+<p><strong>Note:</strong> cache-kit is async-first and designed for modern async databases (SQLx, SeaORM, tokio-postgres). See the <a href="async-model">Async Programming Model</a> page for details.</p>
+
+<hr />
+
+<h2 id="orm-agnostic-and-database-friendly">ORM-Agnostic and Database-Friendly</h2>
+
+<p>cache-kit does <strong>not depend on any ORM</strong>.</p>
+
+<p>It operates on:</p>
+<ul>
+  <li>Serializable entities</li>
+  <li>Deterministic cache keys</li>
+  <li>Explicit cache boundaries</li>
+</ul>
+
+<p>This means:</p>
+<ul>
+  <li>You can swap ORMs without rewriting cache logic</li>
+  <li>Cache behavior lives outside persistence concerns</li>
+  <li>Database models and cached entities remain your responsibility</li>
+</ul>
+
+<h3 id="orm-compatibility">ORM Compatibility</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>ORM/Database Layer</th>
+      <th>Status</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SQLx</strong></td>
+      <td>✅ Tier-1</td>
+      <td><a href="https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx">actixsqlx example</a></td>
+    </tr>
+    <tr>
+      <td><strong>SeaORM</strong></td>
+      <td>✅ Compatible</td>
+      <td>Community contributions welcome</td>
+    </tr>
+    <tr>
+      <td><strong>Diesel</strong></td>
+      <td>✅ Compatible</td>
+      <td>Community contributions welcome</td>
+    </tr>
+    <tr>
+      <td><strong>tokio-postgres</strong></td>
+      <td>✅ Compatible</td>
+      <td>Works with any database layer</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A reference implementation using <strong>Actix + SQLx</strong> is provided, but cache-kit is not tied to that stack.</p>
+
+<hr />
+
+<h2 id="serialization-is-explicit">Serialization Is Explicit</h2>
+
+<p>cache-kit treats serialization as a <strong>first-class, pluggable concern</strong>.</p>
+
+<h3 id="supported-formats">Supported Formats</h3>
+
+<ul>
+  <li><strong>Postcard</strong> (Tier-1, recommended for performance)</li>
+  <li><strong>MessagePack</strong> (Planned, community contributions welcome)</li>
+</ul>
+
+<p>Serialization is:</p>
+<ul>
+  <li>Independent of transport (HTTP, gRPC, workers)</li>
+  <li>Independent of cache backend (Redis, Memcached, InMemory)</li>
+  <li>Chosen explicitly by the user</li>
+</ul>
+
+<h3 id="known-limitations">Known Limitations</h3>
+
+<p>Some serialization formats (including <strong>Postcard</strong>) do <strong>not support certain data types</strong> out of the box.</p>
+
+<p>For example:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Decimal</code> types are <strong>not supported</strong> by Postcard</li>
+  <li>You must either:
+    <ul>
+      <li>Convert to supported primitives (e.g., store as <code class="language-plaintext highlighter-rouge">i64</code> cents instead of <code class="language-plaintext highlighter-rouge">Decimal</code> dollars)</li>
+      <li>Implement custom serialization</li>
+      <li>Choose a different serialization strategy</li>
+    </ul>
+  </li>
+</ul>
+
+<p>cache-kit does not silently work around these limitations — they are part of the design trade-off.</p>
+
+<p>See the <a href="serialization">Serialization Support</a> page for detailed guidance.</p>
+
+<hr />
+
+<h2 id="backend-agnostic-caching">Backend-Agnostic Caching</h2>
+
+<p>cache-kit supports multiple cache backends with explicit tiering:</p>
+
+<h3 id="tier-0-production-grade">Tier-0: Production-Grade</h3>
+<ul>
+  <li><strong>Redis</strong> and Redis-compatible managed services (AWS ElastiCache, DigitalOcean Managed Redis)</li>
+  <li><strong>Memcached</strong></li>
+</ul>
+
+<h3 id="tier-1-development--testing">Tier-1: Development &amp; Testing</h3>
+<ul>
+  <li><strong>InMemory</strong> — Fast, zero-dependency, perfect for tests and local development</li>
+</ul>
+
+<p>Backends are treated as <strong>replaceable implementations</strong>, not architectural commitments.</p>
+
+<p>See the <a href="backends">Cache Backend Support</a> page for configuration details.</p>
+
+<hr />
+
+<h2 id="design-philosophy">Design Philosophy</h2>
+
+<p>cache-kit focuses on:</p>
+<ul>
+  <li><strong>Boundaries, not ownership</strong> — Integrate around ORMs, frameworks, and transports</li>
+  <li><strong>Explicit behavior, not hidden magic</strong> — No surprises, predictable outcomes</li>
+  <li><strong>Integration, not lock-in</strong> — Works with your existing stack</li>
+</ul>
+
+<p>It is safe to use:</p>
+<ul>
+  <li>Inside libraries</li>
+  <li>Inside SDKs</li>
+  <li>Inside large services</li>
+  <li>Alongside existing frameworks and ORMs</li>
+</ul>
+
+<p>cache-kit aims to be predictable, composable, and honest about trade-offs.</p>
+
+<hr />
+
+<h2 id="quick-example">Quick Example</h2>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">cache_kit</span><span class="p">::{</span>
+    <span class="n">CacheEntity</span><span class="p">,</span> <span class="n">CacheFeed</span><span class="p">,</span> <span class="n">DataRepository</span><span class="p">,</span> <span class="n">CacheService</span><span class="p">,</span>
+    <span class="nn">backend</span><span class="p">::</span><span class="n">InMemoryBackend</span><span class="p">,</span>
+    <span class="nn">strategy</span><span class="p">::</span><span class="n">CacheStrategy</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="k">use</span> <span class="nn">serde</span><span class="p">::{</span><span class="n">Deserialize</span><span class="p">,</span> <span class="n">Serialize</span><span class="p">};</span>
+
+<span class="c1">// 1. Define your entity</span>
+<span class="nd">#[derive(Clone,</span> <span class="nd">Serialize,</span> <span class="nd">Deserialize)]</span>
+<span class="k">struct</span> <span class="n">User</span> <span class="p">{</span>
+    <span class="n">id</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1">// 2. Implement CacheEntity</span>
+<span class="k">impl</span> <span class="n">CacheEntity</span> <span class="k">for</span> <span class="n">User</span> <span class="p">{</span>
+    <span class="k">type</span> <span class="n">Key</span> <span class="o">=</span> <span class="nb">String</span><span class="p">;</span>
+    <span class="k">fn</span> <span class="nf">cache_key</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="k">Self</span><span class="p">::</span><span class="n">Key</span> <span class="p">{</span> <span class="k">self</span><span class="py">.id</span><span class="nf">.clone</span><span class="p">()</span> <span class="p">}</span>
+    <span class="k">fn</span> <span class="nf">cache_prefix</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">&amp;</span><span class="k">'static</span> <span class="nb">str</span> <span class="p">{</span> <span class="s">"user"</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 3. Create a feeder</span>
+<span class="k">struct</span> <span class="n">UserFeeder</span> <span class="p">{</span>
+    <span class="n">id</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="n">user</span><span class="p">:</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">CacheFeed</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">UserFeeder</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">entity_id</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">String</span> <span class="p">{</span> <span class="k">self</span><span class="py">.id</span><span class="nf">.clone</span><span class="p">()</span> <span class="p">}</span>
+    <span class="k">fn</span> <span class="nf">feed</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">:</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span> <span class="k">self</span><span class="py">.user</span> <span class="o">=</span> <span class="n">entity</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 4. Create a repository</span>
+<span class="k">struct</span> <span class="n">UserRepository</span><span class="p">;</span>
+
+<span class="k">impl</span> <span class="n">DataRepository</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">UserRepository</span> <span class="p">{</span>
+    <span class="k">async</span> <span class="k">fn</span> <span class="nf">fetch_by_id</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">id</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">String</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nn">cache_kit</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+        <span class="c1">// Your database fetch logic</span>
+        <span class="nf">Ok</span><span class="p">(</span><span class="nf">Some</span><span class="p">(</span><span class="n">User</span> <span class="p">{</span>
+            <span class="n">id</span><span class="p">:</span> <span class="n">id</span><span class="nf">.clone</span><span class="p">(),</span>
+            <span class="n">name</span><span class="p">:</span> <span class="s">"Alice"</span><span class="nf">.to_string</span><span class="p">(),</span>
+        <span class="p">}))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 5. Use the cache</span>
+<span class="nd">#[tokio::main]</span>
+<span class="k">async</span> <span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span> <span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span> <span class="nn">std</span><span class="p">::</span><span class="nn">error</span><span class="p">::</span><span class="n">Error</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">backend</span> <span class="o">=</span> <span class="nn">InMemoryBackend</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">cache</span> <span class="o">=</span> <span class="nn">CacheService</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">backend</span><span class="p">);</span>
+
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">feeder</span> <span class="o">=</span> <span class="n">UserFeeder</span> <span class="p">{</span>
+        <span class="n">id</span><span class="p">:</span> <span class="s">"user_001"</span><span class="nf">.to_string</span><span class="p">(),</span>
+        <span class="n">user</span><span class="p">:</span> <span class="nb">None</span><span class="p">,</span>
+    <span class="p">};</span>
+    <span class="k">let</span> <span class="n">repository</span> <span class="o">=</span> <span class="n">UserRepository</span><span class="p">;</span>
+
+    <span class="n">cache</span><span class="nf">.execute</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">feeder</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">repository</span><span class="p">,</span> <span class="nn">CacheStrategy</span><span class="p">::</span><span class="n">Refresh</span><span class="p">)</span><span class="k">.await</span><span class="o">?</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="k">let</span> <span class="nf">Some</span><span class="p">(</span><span class="n">user</span><span class="p">)</span> <span class="o">=</span> <span class="n">feeder</span><span class="py">.user</span> <span class="p">{</span>
+        <span class="nd">println!</span><span class="p">(</span><span class="s">"User: {}"</span><span class="p">,</span> <span class="n">user</span><span class="py">.name</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nf">Ok</span><span class="p">(())</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="next-steps">Next Steps</h2>
+
+<ul>
+  <li>Learn the <a href="concepts">core concepts</a> behind cache-kit</li>
+  <li>Understand <a href="async-model">async usage patterns</a></li>
+  <li>Explore <a href="database-compatibility">ORM and backend compatibility</a></li>
+  <li>Review the <a href="https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx">Actix + SQLx reference implementation</a></li>
+</ul>
+
+<hr />
+
+<h2 id="project-status">Project Status</h2>
+
+<p><strong>Version:</strong> 0.9.0
+<strong>Status:</strong> Production-ready ✅
+<strong>Async Runtime:</strong> tokio 1.41+
+<strong>Rust Version:</strong> 1.75+</p>
+
+<hr />
+
+<h2 id="license">License</h2>
+
+<p>MIT License - Copyright (c) 2025 Kishore kumar Neelamegam</p>
+
+<p>See <a href="https://github.com/megamsys/cache-kit.rs/blob/main/LICENSE">LICENSE</a> for details.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://github.com/megamsys/cache-kit.rs" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://crates.io/crates/cache-kit" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-box" aria-hidden="true"></i> crates.io</a></li>
+        
+      
+    
+
+    
+      <li><a href="/cache-kit.rs/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">cache-kit</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/cache-kit.rs/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/cache-kit.rs/assets/js/lunr/lunr.min.js"></script>
+<script src="/cache-kit.rs/assets/js/lunr/lunr-store.js"></script>
+<script src="/cache-kit.rs/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
