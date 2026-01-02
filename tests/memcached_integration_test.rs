@@ -39,11 +39,7 @@ use cache_kit::repository::InMemoryRepository;
 use cache_kit::{CacheEntity, CacheExpander, CacheStrategy};
 use serde::{Deserialize, Serialize};
 use std::env;
-use std::sync::atomic::{AtomicU64, Ordering};
 use std::time::Duration;
-
-/// Global counter for generating unique test IDs
-static TEST_COUNTER: AtomicU64 = AtomicU64::new(0);
 
 /// Helper: Get Memcached server address from environment or use default
 fn get_memcached_url() -> String {
@@ -52,12 +48,15 @@ fn get_memcached_url() -> String {
 
 /// Helper: Generate a unique test key prefix for test isolation
 ///
-/// Each test gets a unique prefix combining a counter and thread ID,
-/// ensuring tests can run in parallel without key conflicts.
+/// Uses UUID v7 for guaranteed uniqueness across all parallel tests.
+/// Format uses only alphanumeric and hyphens to comply with memcached key restrictions.
 fn unique_test_key(base: &str) -> String {
-    let id = TEST_COUNTER.fetch_add(1, Ordering::SeqCst);
-    let thread_id = std::thread::current().id();
-    format!("test:{:?}:{}:{}", thread_id, id, base)
+    use uuid::Uuid;
+
+    let uuid = Uuid::now_v7();
+    // Use simple format without hyphens and colons
+    let clean_base = base.replace(':', "_").replace('-', "_");
+    format!("test_{}_{}", uuid.simple(), clean_base)
 }
 
 /// Helper: Generate multiple unique test keys
@@ -75,7 +74,7 @@ async fn create_test_backend() -> Result<MemcachedBackend, Box<dyn std::error::E
     let config = MemcachedConfig {
         servers: vec![memcached_url],
         connection_timeout: Duration::from_secs(5),
-        pool_size: 10,
+        pool_size: 32, // Increased for parallel test execution
     };
     let backend = MemcachedBackend::new(config).await?;
     Ok(backend)
@@ -533,16 +532,10 @@ async fn test_memcached_mdelete() {
 
     let test_keys = unique_test_keys("mdelete", 3);
 
-    // Set keys
+    // Set keys with verification after each to ensure reliability
     for key in &test_keys {
         backend.set(key, b"value".to_vec(), None).await.unwrap();
-    }
-
-    // Small delay to ensure Memcached has processed all writes
-    tokio::time::sleep(Duration::from_millis(100)).await;
-
-    // Verify keys exist using get() to ensure they were actually set
-    for key in &test_keys {
+        // Verify immediately after each SET
         let value = backend.get(key).await.unwrap();
         assert!(value.is_some(), "Key {} should exist after SET", key);
     }
