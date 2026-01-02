@@ -582,4 +582,4 @@ let product_service = ProductService::new(cache.clone());
 - Learn about [Database & ORM compatibility](/database-compatibility/)
 - Explore [Cache backend options](/backends/) in detail
 - Review [Serialization formats](/serialization/)
-- See the [Actix + SQLx example](https://github.com/megamsys/tree/main/examples/actixsqlx)
+- See the [Actix + SQLx example](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx)

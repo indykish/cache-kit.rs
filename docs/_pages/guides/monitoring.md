@@ -166,7 +166,7 @@ pub async fn get_user_with_metrics(
 
 ### Expose Metrics Endpoint
 
-See the [Axum example](https://github.com/megamsys/tree/main/examples/axum) for a complete working implementation with:
+See the [Axum example](https://github.com/megamsys/cache-kit.rs/tree/main/examples/axum) for a complete working implementation with:
 
 - Metrics HTTP endpoint
 - API server with cache instrumentation

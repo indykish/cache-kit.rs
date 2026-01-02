@@ -497,6 +497,6 @@ impl CacheMetrics {
 ## Next Steps
 
 - Review [Core Concepts](/concepts) — Design philosophy and principles
-- Explore the [Actix + SQLx reference implementation](https://github.com/megamsys/tree/main/examples/actixsqlx)
+- Explore the [Actix + SQLx reference implementation](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx)
 - Read about [Serialization formats](/serialization)
 - Check the [Installation guide](/installation)

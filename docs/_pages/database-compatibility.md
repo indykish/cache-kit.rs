@@ -33,7 +33,7 @@ This means:
 
 | ORM      | Status          | Example                                                                            | Notes                                 |
 | -------- | --------------- | ---------------------------------------------------------------------------------- | ------------------------------------- |
-| **SQLx** | ✅ Full Support | [actixsqlx](https://github.com/megamsys/tree/main/examples/actixsqlx) | Async-first, compile-time checked SQL |
+| **SQLx** | ✅ Full Support | [actixsqlx](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx) | Async-first, compile-time checked SQL |
 
 ### Tier-1: Compatible (Community Examples Welcome)
 
@@ -242,8 +242,8 @@ impl UserService {
 
 **Complete examples:**
 
-- **[examples/actixsqlx](https://github.com/megamsys/tree/main/examples/actixsqlx)** — Full Actix + SQLx implementation
-- **[examples/actixsqlx/src/services/user_service.rs](https://github.com/megamsys/tree/main/examples/actixsqlx/src/services/user_service.rs)** — Service layer with caching
+- **[examples/actixsqlx](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx)** — Full Actix + SQLx implementation
+- **[examples/actixsqlx/src/services/user_service.rs](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx/src/services/user_service.rs)** — Service layer with caching
 
 ---
 

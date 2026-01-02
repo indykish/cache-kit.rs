@@ -108,7 +108,7 @@ This means:
 
 | ORM/Database Layer | Status        | Example                                                                                    |
 | ------------------ | ------------- | ------------------------------------------------------------------------------------------ |
-| **SQLx**           | ✅ Tier-1     | [actixsqlx example](https://github.com/megamsys/tree/main/examples/actixsqlx) |
+| **SQLx**           | ✅ Tier-1     | [actixsqlx example](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx) |
 | **SeaORM**         | ✅ Compatible | Community contributions welcome                                                            |
 | **Diesel**         | ✅ Compatible | Community contributions welcome                                                            |
 | **tokio-postgres** | ✅ Compatible | Works with any database layer                                                              |
@@ -265,7 +265,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 - Learn the [core concepts](concepts) behind cache-kit
 - Understand [async usage patterns](async-model)
 - Explore [ORM and backend compatibility](/database-compatibility)
-- Review the [Actix + SQLx reference implementation](https://github.com/megamsys/tree/main/examples/actixsqlx)
+- Review the [Actix + SQLx reference implementation](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx)
 
 ---
 

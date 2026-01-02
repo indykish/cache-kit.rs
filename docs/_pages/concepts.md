@@ -952,4 +952,4 @@ cache-kit is **not** the right choice if you need:
 - [API Frameworks](/api-frameworks) — Using with Axum, Actix, gRPC
 - [Serialization](/serialization) — Postcard and serialization options
 - [Cache Backends](/backends) — Redis, Memcached, InMemory
-- Explore the [Actix + SQLx reference implementation](https://github.com/megamsys/tree/main/examples/actixsqlx)
+- Explore the [Actix + SQLx reference implementation](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx)

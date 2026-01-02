@@ -324,5 +324,5 @@ struct User {
 
 - Learn about [Cache backend options](/backends)
 - Review [Core Concepts](/concepts) — Design philosophy and principles
-- Explore the [Actix + SQLx reference implementation](https://github.com/megamsys/tree/main/examples/actixsqlx)
-- **Contribute MessagePack support!** See [CONTRIBUTING.md](https://github.com/megamsys/blob/main/CONTRIBUTING.md)
+- Explore the [Actix + SQLx reference implementation](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx)
+- **Contribute MessagePack support!** See [CONTRIBUTING.md](https://github.com/megamsys/cache-kit.rs/blob/main/CONTRIBUTING.md)
