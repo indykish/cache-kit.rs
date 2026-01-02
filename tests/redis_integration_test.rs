@@ -206,10 +206,7 @@ async fn test_redis_get_nonexistent_key() {
         .expect("Failed to create Redis backend");
 
     let test_key = unique_test_key("nonexistent");
-    let result = backend
-        .get(&test_key)
-        .await
-        .expect("GET should not error");
+    let result = backend.get(&test_key).await.expect("GET should not error");
 
     assert!(result.is_none(), "Nonexistent key should return None");
     println!("✓ Nonexistent key returns None correctly");
@@ -231,7 +228,10 @@ async fn test_redis_exists() {
     let test_key = unique_test_key("exists");
 
     // Key should not exist initially
-    assert!(!backend.exists(&test_key).await.expect("EXISTS check failed"));
+    assert!(!backend
+        .exists(&test_key)
+        .await
+        .expect("EXISTS check failed"));
 
     // Set key
     backend
@@ -240,7 +240,10 @@ async fn test_redis_exists() {
         .expect("SET failed");
 
     // Key should exist now
-    assert!(backend.exists(&test_key).await.expect("EXISTS check failed"));
+    assert!(backend
+        .exists(&test_key)
+        .await
+        .expect("EXISTS check failed"));
     println!("✓ EXISTS check works correctly");
 
     // Clean up
@@ -561,16 +564,8 @@ async fn test_redis_pool_reuse() {
         .expect("SET failed");
 
     // Verify both keys exist
-    assert!(backend1
-        .get(&key1)
-        .await
-        .expect("GET failed")
-        .is_some());
-    assert!(backend2
-        .get(&key2)
-        .await
-        .expect("GET failed")
-        .is_some());
+    assert!(backend1.get(&key1).await.expect("GET failed").is_some());
+    assert!(backend2.get(&key2).await.expect("GET failed").is_some());
 
     println!("✓ Cloned backends share connection pool correctly");
 
