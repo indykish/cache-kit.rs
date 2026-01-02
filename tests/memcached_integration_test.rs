@@ -208,10 +208,7 @@ async fn test_memcached_get_nonexistent_key() {
         .expect("Failed to create Memcached backend");
 
     let test_key = unique_test_key("nonexistent");
-    let result = backend
-        .get(&test_key)
-        .await
-        .expect("GET should not error");
+    let result = backend.get(&test_key).await.expect("GET should not error");
 
     assert!(result.is_none(), "Nonexistent key should return None");
     println!("✓ Nonexistent key returns None correctly");
@@ -421,14 +418,8 @@ async fn test_memcached_mget_with_missing_keys() {
     let key_missing = unique_test_key("mget_missing");
 
     // Set only some keys
-    backend
-        .set(&key1, b"value1".to_vec(), None)
-        .await
-        .unwrap();
-    backend
-        .set(&key2, b"value2".to_vec(), None)
-        .await
-        .unwrap();
+    backend.set(&key1, b"value1".to_vec(), None).await.unwrap();
+    backend.set(&key2, b"value2".to_vec(), None).await.unwrap();
 
     // MGET with mix of existing and non-existing keys
     let keys = vec![key1.as_str(), key_missing.as_str(), key2.as_str()];
