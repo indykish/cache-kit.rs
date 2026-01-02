@@ -264,7 +264,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 - Learn the [core concepts](concepts) behind cache-kit
 - Understand [async usage patterns](async-model)
-- Explore [ORM and backend compatibility](/cache-kit.rs/database-compatibility)
+- Explore [ORM and backend compatibility](/database-compatibility)
 - Review the [Actix + SQLx reference implementation](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx)
 
 ---
@@ -273,4 +273,4 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 MIT License - Copyright (c) 2025 Kishore kumar Neelamegam
 
-See [LICENSE](https://github.com/megamsys/cache-kit.rs/blob/main/LICENSE) for details.
+See [LICENSE](https://github.com/megamsys/blob/main/LICENSE) for details.

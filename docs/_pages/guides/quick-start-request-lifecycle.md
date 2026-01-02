@@ -213,7 +213,7 @@ cache.execute(&mut feeder, &repo, CacheStrategy::Refresh).await?;
 
 **Mitigation:**
 
-For production resilience, see [Failure Modes & Resilience](/cache-kit.rs/guides/failure-modes/) for:
+For production resilience, see [Failure Modes & Resilience](/guides/failure-modes/) for:
 
 - Circuit breaker patterns
 - Graceful degradation strategies
@@ -307,7 +307,7 @@ curl http://localhost:8080/users/123
 
 Now that you understand the request lifecycle, explore:
 
-- [Core Concepts](/cache-kit.rs/concepts/) — Deep dive into feeders, entities, and cache strategies
-- [Actix + SQLx Example](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx) — Production-ready implementation with real database
-- [Failure Modes & Resilience](/cache-kit.rs/guides/failure-modes/) — Handle cache and database failures gracefully
-- [Monitoring & Metrics](/cache-kit.rs/guides/monitoring/) — Track cache hit rates and latency in production
+- [Core Concepts](/concepts/) — Deep dive into feeders, entities, and cache strategies
+- [Actix + SQLx Example](https://github.com/megamsys/cache-kit/.rs/tree/main/examples/actixsqlx) — Production-ready implementation with real database
+- [Failure Modes & Resilience](/guides/failure-modes/) — Handle cache and database failures gracefully
+- [Monitoring & Metrics](/guides/monitoring/) — Track cache hit rates and latency in production

@@ -548,9 +548,9 @@ match cache.execute(&mut feeder, &repository, strategy).await {
 
 ## Reference Links
 
-- [Installation (Human)](/cache-kit.rs/installation/) - Detailed human-readable guide
-- [Core Concepts](/cache-kit.rs/concepts/) - Conceptual deep-dive
-- [Database Compatibility](/cache-kit.rs/database-compatibility/) - Supported ORMs and query builders
-- [Cache Backends](/cache-kit.rs/backends/) - Backend detailed reference
-- [Serialization](/cache-kit.rs/serialization/) - Serialization format and limitations
-- [Async Model](/cache-kit.rs/async-model/) - Async/await patterns
+- [Installation (Human)](/installation/) - Detailed human-readable guide
+- [Core Concepts](/concepts/) - Conceptual deep-dive
+- [Database Compatibility](/database-compatibility/) - Supported ORMs and query builders
+- [Cache Backends](/backends/) - Backend detailed reference
+- [Serialization](/serialization/) - Serialization format and limitations
+- [Async Model](/async-model/) - Async/await patterns

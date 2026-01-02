@@ -9,7 +9,7 @@ date: 2025-12-28
 
 ---
 
-**Note:** cache-kit is framework-agnostic and works with any framework or transport. For the design philosophy behind this approach, see [Core Concepts](/cache-kit.rs/concepts#integration-not-lock-in).
+**Note:** cache-kit is framework-agnostic and works with any framework or transport. For the design philosophy behind this approach, see [Core Concepts](/concepts#integration-not-lock-in).
 
 ---
 
@@ -160,8 +160,8 @@ Define business logic once, use across transports. This pattern keeps cache logi
 
 ## Next Steps
 
-- Learn about [Core Concepts](/cache-kit.rs/concepts) — Understanding cache-kit's design philosophy
-- Explore [Database & ORM Compatibility](/cache-kit.rs/database-compatibility) — ORM integration examples
-- Review [Async Programming Model](/cache-kit.rs/async-model) — Async-first design
-- See [Serialization formats](/cache-kit.rs/serialization) — Postcard and serialization options
-- Explore [Cache backend options](/cache-kit.rs/backends) — Redis, Memcached, InMemory
+- Learn about [Core Concepts](/concepts) — Understanding cache-kit's design philosophy
+- Explore [Database & ORM Compatibility](/database-compatibility) — ORM integration examples
+- Review [Async Programming Model](/async-model) — Async-first design
+- See [Serialization formats](/serialization) — Postcard and serialization options
+- Explore [Cache backend options](/backends) — Redis, Memcached, InMemory

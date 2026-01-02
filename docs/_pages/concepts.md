@@ -388,7 +388,7 @@ cache.execute(&mut feeder, &repo, CacheStrategy::Refresh).await?;
 - Assume entities exist (always return Option)
 - Panic on database errors
 
-**For ORM-specific repository implementations** (SQLx, SeaORM, Diesel), see [Database & ORM Compatibility](/cache-kit.rs/database-compatibility).
+**For ORM-specific repository implementations** (SQLx, SeaORM, Diesel), see [Database & ORM Compatibility](/database-compatibility).
 
 ---
 
@@ -780,7 +780,7 @@ cache-kit is designed to **play well with others**.
 cache.with(&mut feeder, &repository, CacheStrategy::Refresh).await?;
 ```
 
-**ORM Agnostic:** Works with any database layer (see [Database Compatibility](/cache-kit.rs/database-compatibility) for examples).
+**ORM Agnostic:** Works with any database layer (see [Database Compatibility](/database-compatibility) for examples).
 
 **Backend Agnostic:** Swap backends with **zero code changes**:
 
@@ -834,7 +834,7 @@ cache-kit makes intentional trade-offs and is honest about them.
 | **Decimal support**  | ❌ No             | ✅ Yes             |
 | **Language support** | ❌ Rust-only      | ✅ Many languages  |
 
-**Decision:** Prioritize performance for Rust-to-Rust caching. Decimal limitation is documented and workarounds are provided. See [Serialization](/cache-kit.rs/serialization) for details.
+**Decision:** Prioritize performance for Rust-to-Rust caching. Decimal limitation is documented and workarounds are provided. See [Serialization](/serialization) for details.
 
 ### Trade-Off 2: Async DataRepository
 
@@ -845,7 +845,7 @@ cache-kit makes intentional trade-offs and is honest about them.
 | **Compatibility**         | ✅ SQLx, SeaORM, tokio-postgres       |
 | **Ecosystem alignment**   | ✅ Works with modern async frameworks |
 
-**Decision:** Use async trait for modern async databases. This is the recommended pattern for Rust services. See [Async Programming Model](/cache-kit.rs/async-model) for details.
+**Decision:** Use async trait for modern async databases. This is the recommended pattern for Rust services. See [Async Programming Model](/async-model) for details.
 
 ### Trade-Off 3: Explicit Invalidation vs Automatic
 
@@ -946,10 +946,10 @@ cache-kit is **not** the right choice if you need:
 
 ## Next Steps
 
-- [Installation](/cache-kit.rs/installation) — Get started with cache-kit
-- [Database Compatibility](/cache-kit.rs/database-compatibility) — Integration examples
-- [Async Programming Model](/cache-kit.rs/async-model) — Understanding async-first design
-- [API Frameworks](/cache-kit.rs/api-frameworks) — Using with Axum, Actix, gRPC
-- [Serialization](/cache-kit.rs/serialization) — Postcard and serialization options
-- [Cache Backends](/cache-kit.rs/backends) — Redis, Memcached, InMemory
+- [Installation](/installation) — Get started with cache-kit
+- [Database Compatibility](/database-compatibility) — Integration examples
+- [Async Programming Model](/async-model) — Understanding async-first design
+- [API Frameworks](/api-frameworks) — Using with Axum, Actix, gRPC
+- [Serialization](/serialization) — Postcard and serialization options
+- [Cache Backends](/backends) — Redis, Memcached, InMemory
 - Explore the [Actix + SQLx reference implementation](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx)

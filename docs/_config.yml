@@ -8,7 +8,7 @@ title_separator: "|"
 subtitle: ""
 description: "Async, ORM-agnostic caching boundaries for Rust services"
 tagline: "Async, ORM-agnostic caching boundaries for Rust services"
-baseurl: "/cache-kit.rs"
+baseurl: ""
 url: "https://cachekit.org"
 repository: "megamsys/cache-kit.rs"
 

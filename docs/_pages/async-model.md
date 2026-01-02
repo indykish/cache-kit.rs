@@ -56,7 +56,7 @@ The typical interaction flow follows this pattern:
 Async Database → Async Cache → Async Application
 ```
 
-All cache operations work seamlessly within async contexts. For detailed ORM integration examples (SQLx, SeaORM, Diesel), see [Database & ORM Compatibility](/cache-kit.rs/database-compatibility).
+All cache operations work seamlessly within async contexts. For detailed ORM integration examples (SQLx, SeaORM, Diesel), see [Database & ORM Compatibility](/database-compatibility).
 
 ---
 
@@ -73,7 +73,7 @@ pub trait DataRepository<T: CacheEntity>: Send + Sync {
 This design is intentional and provides several benefits:
 
 1. **Native async support** — Aligns with modern Rust practices and integrates seamlessly with async databases
-2. **Flexibility** — Works with both sync and async database layers (see [Database Compatibility](/cache-kit.rs/database-compatibility) for Diesel example using `spawn_blocking`)
+2. **Flexibility** — Works with both sync and async database layers (see [Database Compatibility](/database-compatibility) for Diesel example using `spawn_blocking`)
 3. **Backend compatibility** — Cache backends (Redis, Memcached) are inherently async
 
 **Recommended async databases:**
@@ -82,11 +82,11 @@ This design is intentional and provides several benefits:
 - **SeaORM** — Async ORM for Rust
 - **tokio-postgres** — Pure async PostgreSQL client
 
-For detailed repository implementation examples, see [Database & ORM Compatibility](/cache-kit.rs/database-compatibility).
+For detailed repository implementation examples, see [Database & ORM Compatibility](/database-compatibility).
 
 ### ⚠️ NEVER use block_in_place + block_on
 
-**NEVER use `block_in_place` + `Handle::current().block_on()`** — this pattern is incorrect. Always use `async fn` with `.await` for async databases. For synchronous ORMs like Diesel, use `tokio::task::spawn_blocking` (see [Database Compatibility](/cache-kit.rs/database-compatibility) for examples).
+**NEVER use `block_in_place` + `Handle::current().block_on()`** — this pattern is incorrect. Always use `async fn` with `.await` for async databases. For synchronous ORMs like Diesel, use `tokio::task::spawn_blocking` (see [Database Compatibility](/database-compatibility) for examples).
 
 ---
 
@@ -165,6 +165,6 @@ For complete working examples of tokio-based services using cache-kit with async
 
 ## Next Steps
 
-- Learn about [Core Concepts](/cache-kit.rs/concepts) in cache-kit
-- Explore [Database & ORM Compatibility](/cache-kit.rs/database-compatibility) for detailed ORM integration examples
-- Review [API Frameworks](/cache-kit.rs/api-frameworks) for framework-specific integration patterns
+- Learn about [Core Concepts](/concepts) in cache-kit
+- Explore [Database & ORM Compatibility](/database-compatibility) for detailed ORM integration examples
+- Review [API Frameworks](/api-frameworks) for framework-specific integration patterns
