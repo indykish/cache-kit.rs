@@ -18,7 +18,7 @@ date: 2025-12-21
 
 ## For AI Agents & Automated Tools
 
-If you're using an AI agent, code generator, or automated tool to integrate cache-kit, see the [Installation for Agents](/cache-kit.rs/installation-agents/) page for structured, machine-readable setup information.
+If you're using an AI agent, code generator, or automated tool to integrate cache-kit, see the [Installation for Agents](/installation-agents/) page for structured, machine-readable setup information.
 
 ---
 
@@ -60,7 +60,7 @@ cache-kit provides two APIs for cache operations. **For most use cases, use `Cac
 
 > **⚠️ Can't decide? Use CacheService.** It's simpler and covers most cases.
 
-> **📖 For deeper understanding:** See [Core Concepts](/cache-kit.rs/concepts/) for detailed explanations of `CacheExpander` and `CacheService`, including design philosophy, usage patterns, and examples throughout the documentation.
+> **📖 For deeper understanding:** See [Core Concepts](/concepts/) for detailed explanations of `CacheExpander` and `CacheService`, including design philosophy, usage patterns, and examples throughout the documentation.
 
 ### CacheService (Recommended for Web Applications)
 
@@ -579,7 +579,7 @@ let product_service = ProductService::new(cache.clone());
 
 ## Next Steps
 
-- Learn about [Database & ORM compatibility](/cache-kit.rs/database-compatibility/)
-- Explore [Cache backend options](/cache-kit.rs/backends/) in detail
-- Review [Serialization formats](/cache-kit.rs/serialization/)
-- See the [Actix + SQLx example](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx)
+- Learn about [Database & ORM compatibility](/database-compatibility/)
+- Explore [Cache backend options](/backends/) in detail
+- Review [Serialization formats](/serialization/)
+- See the [Actix + SQLx example](https://github.com/megamsys/tree/main/examples/actixsqlx)

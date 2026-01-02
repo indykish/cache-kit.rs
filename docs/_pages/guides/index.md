@@ -16,4 +16,4 @@ Practical guides for using and contributing to cache-kit.
 
 ## Quick Start
 
-If you're contributing to cache-kit, see [CONTRIBUTING.md](https://github.com/megamsys/cache-kit.rs/blob/main/CONTRIBUTING.md) for development guidelines and submission process.
+If you're contributing to cache-kit, see [CONTRIBUTING.md](https://github.com/megamsys/blob/main/CONTRIBUTING.md) for development guidelines and submission process.

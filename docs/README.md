@@ -43,7 +43,7 @@ bundle install
 # Run Jekyll server
 bundle exec jekyll serve
 
-# View at http://localhost:4000/cache-kit.rs/
+# View at http://localhost:4000/
 ```
 
 ### Live Reload
@@ -54,7 +54,7 @@ Jekyll will automatically rebuild the site when files change. Refresh your brows
 
 The documentation is automatically published to GitHub Pages when pushed to the `main` branch.
 
-**Published URL:** https://megamsys.github.io/cache-kit.rs/
+**Published URL:** https://megamsys.github.io/
 
 ### GitHub Pages Configuration
 
@@ -108,6 +108,6 @@ fn main() {
 
 ## Links
 
-- **Documentation Site:** https://megamsys.github.io/cache-kit.rs/
+- **Documentation Site:** https://megamsys.github.io/
 - **Repository:** https://github.com/megamsys/cache-kit.rs
 - **just-the-docs Docs:** https://just-the-docs.github.io/just-the-docs/

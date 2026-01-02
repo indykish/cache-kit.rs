@@ -33,7 +33,7 @@ This means:
 
 | ORM      | Status          | Example                                                                            | Notes                                 |
 | -------- | --------------- | ---------------------------------------------------------------------------------- | ------------------------------------- |
-| **SQLx** | ✅ Full Support | [actixsqlx](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx) | Async-first, compile-time checked SQL |
+| **SQLx** | ✅ Full Support | [actixsqlx](https://github.com/megamsys/tree/main/examples/actixsqlx) | Async-first, compile-time checked SQL |
 
 ### Tier-1: Compatible (Community Examples Welcome)
 
@@ -242,8 +242,8 @@ impl UserService {
 
 **Complete examples:**
 
-- **[examples/actixsqlx](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx)** — Full Actix + SQLx implementation
-- **[examples/actixsqlx/src/services/user_service.rs](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx/src/services/user_service.rs)** — Service layer with caching
+- **[examples/actixsqlx](https://github.com/megamsys/tree/main/examples/actixsqlx)** — Full Actix + SQLx implementation
+- **[examples/actixsqlx/src/services/user_service.rs](https://github.com/megamsys/tree/main/examples/actixsqlx/src/services/user_service.rs)** — Service layer with caching
 
 ---
 
@@ -304,8 +304,8 @@ For SQLx migration setup and usage, please refer to the [SQLx documentation](htt
 
 ## Next Steps
 
-- Learn about [Core Concepts](/cache-kit.rs/concepts) — Understanding cache-kit fundamentals
-- Review [Async Programming Model](/cache-kit.rs/async-model) — Async-first design
-- Explore [API Frameworks](/cache-kit.rs/api-frameworks) — Framework integration examples
-- See [Serialization options](/cache-kit.rs/serialization) — Postcard and serialization
-- Review [Cache backend choices](/cache-kit.rs/backends) — Redis, Memcached, InMemory
+- Learn about [Core Concepts](/concepts) — Understanding cache-kit fundamentals
+- Review [Async Programming Model](/async-model) — Async-first design
+- Explore [API Frameworks](/api-frameworks) — Framework integration examples
+- See [Serialization options](/serialization) — Postcard and serialization
+- Review [Cache backend choices](/backends) — Redis, Memcached, InMemory

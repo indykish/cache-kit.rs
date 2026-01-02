@@ -9,7 +9,7 @@ date: 2025-12-28
 
 ---
 
-**Note:** cache-kit is framework-agnostic and works with any framework or transport. For the design philosophy behind this approach, see [Core Concepts](/cache-kit.rs/concepts#integration-not-lock-in).
+**Note:** cache-kit is framework-agnostic and works with any framework or transport. For the design philosophy behind this approach, see [Core Concepts](/concepts#integration-not-lock-in).
 
 ---
 
@@ -86,7 +86,7 @@ serde = { version = "1.0", features = ["derive"] }
 
 ### Complete Example
 
-- **[examples/axummetrics](https://github.com/megamsys/cache-kit.rs/tree/main/examples/axummetrics)** — Complete Axum integration with cache-kit including REST API handlers, state management, and Prometheus metrics
+- **[examples/axummetrics](https://github.com/megamsys/tree/main/examples/axummetrics)** — Complete Axum integration with cache-kit including REST API handlers, state management, and Prometheus metrics
 
 ---
 
@@ -96,7 +96,7 @@ Actix is a mature, high-performance web framework.
 
 **Complete example:**
 
-- **[examples/actixsqlx](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx)** — Full Actix Web integration with cache-kit including:
+- **[examples/actixsqlx](https://github.com/megamsys/tree/main/examples/actixsqlx)** — Full Actix Web integration with cache-kit including:
   - Service layer pattern
   - PostgreSQL + SQLx integration
   - CRUD operations with caching
@@ -122,7 +122,7 @@ tokio = { version = "1.41", features = ["full"] }
 
 ### gRPC Service Implementation
 
-- **[examples/axumgrpc](https://github.com/megamsys/cache-kit.rs/tree/main/examples/axumgrpc)** — Complete gRPC integration with cache-kit using Tonic, including:
+- **[examples/axumgrpc](https://github.com/megamsys/tree/main/examples/axumgrpc)** — Complete gRPC integration with cache-kit using Tonic, including:
   - Service handlers
   - Protocol Buffer definitions
   - SQLx database integration
@@ -136,7 +136,7 @@ Define business logic once, use across transports. This pattern keeps cache logi
 
 **Example implementation:**
 
-- **[examples/actixsqlx/src/services/user_service.rs](https://github.com/megamsys/cache-kit.rs/tree/main/examples/actixsqlx/src/services/user_service.rs)** — Complete service layer with cache-kit integration, including CRUD operations with caching and cache invalidation
+- **[examples/actixsqlx/src/services/user_service.rs](https://github.com/megamsys/tree/main/examples/actixsqlx/src/services/user_service.rs)** — Complete service layer with cache-kit integration, including CRUD operations with caching and cache invalidation
 
 ---
 
@@ -160,8 +160,8 @@ Define business logic once, use across transports. This pattern keeps cache logi
 
 ## Next Steps
 
-- Learn about [Core Concepts](/cache-kit.rs/concepts) — Understanding cache-kit's design philosophy
-- Explore [Database & ORM Compatibility](/cache-kit.rs/database-compatibility) — ORM integration examples
-- Review [Async Programming Model](/cache-kit.rs/async-model) — Async-first design
-- See [Serialization formats](/cache-kit.rs/serialization) — Postcard and serialization options
-- Explore [Cache backend options](/cache-kit.rs/backends) — Redis, Memcached, InMemory
+- Learn about [Core Concepts](/concepts) — Understanding cache-kit's design philosophy
+- Explore [Database & ORM Compatibility](/database-compatibility) — ORM integration examples
+- Review [Async Programming Model](/async-model) — Async-first design
+- See [Serialization formats](/serialization) — Postcard and serialization options
+- Explore [Cache backend options](/backends) — Redis, Memcached, InMemory
